@@ -3,6 +3,7 @@
 import Header from './pages/Header';
 import Footer from './pages/Footer';
 import { Outlet } from 'react-router-dom';
+import { router } from "./router";
 // import Product from './pages/Product';
 
 // function App() {
@@ -23,9 +24,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white">
-      <Header/>
-      <Outlet/>
-      <Footer/>
+     <RouterProvider router={router} />
     </div>
   );
 }
