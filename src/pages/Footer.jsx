@@ -63,18 +63,18 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h5 className="font-semibold mb-4">Location</h5>
-            <ul classname="space-y-2">
+            <h5 className="text-start font-semibold mb-4">Location</h5>
+            <ul classname="text-start space-y-2">
               <li>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                <p className="text-start">Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Voluptate fugit saepe aliquid rem similique corporis neque
                 debitis deserunt repellat tempore omnis, molestiae quisquam non
-                placeat iure hic repudiandae mollitia totam.
+                placeat iure hic repudiandae mollitia totam.</p>
               </li>
             </ul>
           </div>
           <div>
-            <h5 className="font-semibold mb-4">Follow Us</h5>
+            <h5 className=" text-start font-semibold mb-4">Follow Us</h5>
             <div className="flex space-x-4">
               <Link to="#" className="text-gray-400 hover:text-white">
                 <FaFacebook size={24} />

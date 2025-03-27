@@ -1,3 +1,8 @@
+import { ArrowRight } from "lucide-react";
+import Product from "./Product";
+import About from "./About";
+import Blogs from "./Blogs";
+import Contact from "./Contact";
 export default function Home() {
     return (
         <>
@@ -12,14 +17,18 @@ export default function Home() {
                 <ArrowRight size={20} />
               </button>
             </div>
-            <div className="relative">
+            <div className="aspect-[16/9] overflow-hidden rounded-lg shadow-xl">
               <img 
-                src="https://images.unsplash.com/photo-1612761636764-449dd570dd2d?auto=format&fit=crop&q=80&w=1000" 
+                src="https://i.pinimg.com/474x/09/fb/f5/09fbf57b99b2589276dc8f4557734de7.jpg" 
                 alt="Makhana Product"
-                className="rounded-lg shadow-xl"
+                className="rounded-lg shadow-xl aspect-ratio-16/9"
               />
             </div>
           </div>
+          <Product/>
+          <Blogs/>
+          <About/>
+          <Contact/>
         </div>
       </section>
         </>

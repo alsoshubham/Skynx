@@ -1,46 +1,40 @@
 import React, { useEffect, useRef } from "react";
 
-const blogPosts = [
+const newsItems = [
   {
     id: 1,
-    title: "The Nutritional Benefits of Makhana You Should Know",
-    excerpt: "Explore the incredible health benefits of incorporating makhana into your daily diet.",
-    date: "June 10, 2023",
-    category: "Health",
-    imagePath: "https://images.unsplash.com/photo-1505576399279-565b52d4ac71?q=80&w=1587&auto=format&fit=crop",
+    title: "The Rising Popularity of Makhana in Health Food Markets",
+    excerpt: "Discover why makhana is becoming the favorite snack for health-conscious consumers worldwide.",
+    date: "May 15, 2023",
+    source: "Health & Wellness Magazine",
+    imagePath: "https://images.unsplash.com/photo-1518843875459-f738682238a6?q=80&w=1642&auto=format&fit=crop",
   },
   {
     id: 2,
-    title: "5 Creative Makhana Recipes to Try This Weekend",
-    excerpt: "Discover delicious and innovative ways to enjoy makhana beyond the traditional snack.",
-    date: "May 25, 2023",
-    category: "Recipes",
-    imagePath: "https://images.unsplash.com/photo-1561043433-aaf687c4cf04?q=80&w=1470&auto=format&fit=crop",
+    title: "Our Sustainable Farming Practices Featured in National Geographic",
+    excerpt: "National Geographic highlights our eco-friendly makhana cultivation methods.",
+    date: "April 3, 2023",
+    source: "National Geographic",
+    imagePath: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=1587&auto=format&fit=crop",
   },
   {
     id: 3,
-    title: "The Ancient History of Makhana in Traditional Medicine",
-    excerpt: "Learn about the historical significance of makhana in Ayurvedic and traditional healing practices.",
-    date: "April 18, 2023",
-    category: "Culture",
-    imagePath: "https://images.unsplash.com/photo-1481671703460-040cb8a2d909?q=80&w=1587&auto=format&fit=crop",
+    title: "Celebrity Chef Creates Gourmet Recipes with Our Makhana",
+    excerpt: "Renowned chef develops exclusive recipes featuring our premium makhana varieties.",
+    date: "March 22, 2023",
+    source: "Culinary Trends",
+    imagePath: "https://images.unsplash.com/photo-1568625365131-079e026a927d?q=80&w=1587&auto=format&fit=crop",
   },
 ];
 
-const Blogs = () => {
-  const blogsRef = useRef(null);
+const NewsSection = () => {
+  const newsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!blogsRef.current) {
-      console.error("blogsRef is not assigned"); // Debug log
-      return;
-    }
-
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            console.log("Element is intersecting:", entry.target); // Debug log
             entry.target.classList.add("animate-fade-in");
             observer.unobserve(entry.target);
           }
@@ -49,64 +43,59 @@ const Blogs = () => {
       { threshold: 0.1 }
     );
 
-    const blogElements = blogsRef.current.querySelectorAll(".blog-item");
-    if (!blogElements) {
-      console.error("No blog elements found"); // Debug log
-      return;
-    }
-
-    blogElements.forEach((el) => {
+    const newsElements = newsRef.current?.querySelectorAll(".news-item");
+    newsElements?.forEach((el) => {
       observer.observe(el);
     });
 
     return () => {
-      blogElements.forEach((el) => {
+      newsElements?.forEach((el) => {
         observer.unobserve(el);
       });
     };
-  }, [blogsRef]);
+  }, [newsRef]);
 
   return (
-    <section id="blog" className="bg-white py-20">
+    <section id="news" className="bg-white py-20">
       <div className="section-container">
         <div className="mb-16 text-center">
-          <h2 className="section-title text-3xl font-serif mb-12 text-center">Latest from Our Blog</h2>
+          <h2 className="section-title">News & Media</h2>
           <p className="section-description">
-            Explore our articles for insights, recipes, and stories about makhana.
+            Stay updated with the latest news and media coverage about our brand.
           </p>
         </div>
 
         <div 
-          ref={blogsRef}
+          ref={newsRef}
           className="grid grid-cols-1 gap-8 md:grid-cols-3"
         >
-          {blogPosts.map((post, index) => (
+          {newsItems.map((item, index) => (
             <div 
-              key={post.id} 
-              className="blog-item overflow-hidden rounded-xl bg-white transition-all duration-300 hover:shadow-lg hover-lift subtle-border"
+              key={item.id} 
+              className="news-item opacity-0 overflow-hidden rounded-xl border bg-white shadow-sm transition-all duration-300 hover:shadow-md hover-lift"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <div className="aspect-[16/9] overflow-hidden">
                 <img
-                  src={post.imagePath}
-                  alt={post.title}
+                  src={item.imagePath}
+                  alt={item.title}
                   className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                 />
               </div>
               
               <div className="p-6">
                 <div className="mb-3 flex items-center space-x-2">
-                  <span className="inline-block rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
-                    {post.category}
+                  <span className="text-xs font-medium text-muted-foreground">
+                    {item.date}
                   </span>
                   <span className="text-xs text-muted-foreground">•</span>
-                  <span className="text-xs text-muted-foreground">
-                    {post.date}
+                  <span className="text-xs font-medium text-muted-foreground">
+                    {item.source}
                   </span>
                 </div>
                 
-                <h3 className="text-xl font-medium">{post.title}</h3>
-                <p className="mt-2 text-muted-foreground">{post.excerpt}</p>
+                <h3 className="text-xl font-medium">{item.title}</h3>
+                <p className="mt-2 text-muted-foreground">{item.excerpt}</p>
                 
                 <a
                   href="#"
@@ -139,7 +128,7 @@ const Blogs = () => {
             href="#"
             className="rounded-full border bg-white px-8 py-3 text-base font-medium text-primary shadow-sm transition-all hover:bg-secondary"
           >
-            View All Posts
+            View All News
           </a>
         </div>
       </div>
@@ -147,4 +136,4 @@ const Blogs = () => {
   );
 };
 
-export default Blogs;
+export default NewsSection;
