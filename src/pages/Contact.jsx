@@ -57,28 +57,35 @@ const ContactSection = () => {
       return;
     }
     // Form submission logic would go here
-    alert("Form submitted! This would be connected to a backend in a real implementation.");
+    alert(
+      "Form submitted! This would be connected to a backend in a real implementation."
+    );
   };
 
   return (
     <section id="contact" className="bg-[#f8f8f8] py-20">
       <div className="section-container">
         <div className="mb-16 text-center">
-          <h2 className="section-title font-serif text-[#0D0D0D] font-medium text-5xl">Contact Us</h2>
+          <h2 className="section-title font-serif text-[#0D0D0D] font-medium text-4xl">
+            Contact Us
+          </h2>
           <p className="section-description text-[#737373] mt-4 max-w-2xl mx-auto text-2xl">
             Have questions or feedback? We'd love to hear from you.
           </p>
         </div>
 
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-2">
-          <form 
-            ref={formRef} 
+          <form
+            ref={formRef}
             onSubmit={handleSubmit}
             className="space-y-6 rounded-2xl bg-white text-black p-8 shadow-sm"
           >
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
               <div>
-                <label htmlFor="name" className="mb-2 block text-14px font-medium text-[#0D0D0D] text-start">
+                <label
+                  htmlFor="name"
+                  className="mb-2 block text-14px font-medium text-[#0D0D0D] text-start"
+                >
                   Name
                 </label>
                 <input
@@ -90,11 +97,16 @@ const ContactSection = () => {
                   placeholder="Your name"
                   required
                 />
-                {formErrors.name && <p className="text-red-500 text-sm">{formErrors.name}</p>}
+                {formErrors.name && (
+                  <p className="text-red-500 text-sm">{formErrors.name}</p>
+                )}
               </div>
-              
+
               <div>
-                <label htmlFor="email" className="mb-2 block text-14px font-medium text-[#0D0D0D] text-start">
+                <label
+                  htmlFor="email"
+                  className="mb-2 block text-14px font-medium text-[#0D0D0D] text-start"
+                >
                   Email
                 </label>
                 <input
@@ -106,12 +118,17 @@ const ContactSection = () => {
                   placeholder="Your email"
                   required
                 />
-                {formErrors.email && <p className="text-red-500 text-sm">{formErrors.email}</p>}
+                {formErrors.email && (
+                  <p className="text-red-500 text-sm">{formErrors.email}</p>
+                )}
               </div>
             </div>
-            
+
             <div>
-              <label htmlFor="subject" className="mb-2 block text-14px font-medium text-[#0D0D0D] text-start">
+              <label
+                htmlFor="subject"
+                className="mb-2 block text-14px font-medium text-[#0D0D0D] text-start"
+              >
                 Subject
               </label>
               <input
@@ -123,11 +140,16 @@ const ContactSection = () => {
                 placeholder="Subject"
                 required
               />
-              {formErrors.subject && <p className="text-red-500 text-sm">{formErrors.subject}</p>}
+              {formErrors.subject && (
+                <p className="text-red-500 text-sm">{formErrors.subject}</p>
+              )}
             </div>
-            
+
             <div>
-              <label htmlFor="message" className="mb-2 block text-14px font-medium text-[#0D0D0D] text-start">
+              <label
+                htmlFor="message"
+                className="mb-2 block text-14px font-medium text-[#0D0D0D] text-start"
+              >
                 Message
               </label>
               <textarea
@@ -139,9 +161,11 @@ const ContactSection = () => {
                 placeholder="Your message"
                 required
               ></textarea>
-              {formErrors.message && <p className="text-red-500 text-sm">{formErrors.message}</p>}
+              {formErrors.message && (
+                <p className="text-red-500 text-sm">{formErrors.message}</p>
+              )}
             </div>
-            
+
             <button
               type="submit"
               className="w-full rounded-lg bg-primary px-5 py-3 text-center text-14px font-medium bg-black text-white transition-colors hover:bg-primary/90"
@@ -150,52 +174,59 @@ const ContactSection = () => {
             </button>
           </form>
 
-          <div 
-            ref={infoRef}
-            className="space-y-8 lg:pl-8"
-          >
+          <div ref={infoRef} className="space-y-8 lg:pl-8">
             <div>
-              <h3 className="mb-2 block text-20px font-medium text-[#0D0D0D] text-start">Get in Touch</h3>
+              <h3 className="mb-2 block text-20px font-medium text-[#0D0D0D] text-start">
+                Get in Touch
+              </h3>
               <p className="mt-2 text-[#737373] text-16px text-start text-muted-foreground">
-                We're here to answer your questions and provide assistance. Feel free to reach out to us through any of the following methods.
+                We're here to answer your questions and provide assistance. Feel
+                free to reach out to us through any of the following methods.
               </p>
             </div>
-            
+
             <div className="text-start space-y-6">
               <div className="flex items-start">
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-[#0D0D0D] bg-[#E1E1E1] opacity 10.0% text-20px">
                   <MapPin className="h-5 w-5 text-primary" />
                 </div>
                 <div className="ml-4">
-                  <h4 className="mb-2 block text-16px font-medium text-[#0D0D0D] text-start">Our Location</h4>
+                  <h4 className="mb-2 block text-16px font-medium text-[#0D0D0D] text-start">
+                    Our Location
+                  </h4>
                   <p className="mt-2 text-[#737373] text-16px text-start text-muted-foreground">
-                    123 Makhana Street, Gourmet District
+                    H.No. 8 1ST Flr, Pvt 101, 102, Blk-C, Ranjit Nagar, Patel
+                    Nagar West, Delhi
                     <br />
-                    New York, NY 10001, USA
+                    New Delhi, Central Delhi- 110008
                   </p>
                 </div>
               </div>
-              
+
               <div className="flex items-start">
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-[#0D0D0D] bg-[#E1E1E1] opacity 10.0% text-20px">
                   <Mail className="h-5 w-5 text-primary" />
                 </div>
                 <div className="ml-4">
-                  <h4 className="mb-2 block text-16px font-medium text-[#0D0D0D] text-start">Email Us</h4>
+                  <h4 className="mb-2 block text-16px font-medium text-[#0D0D0D] text-start">
+                    Email Us
+                  </h4>
                   <p className="mt-2 text-[#737373] text-16px text-start text-muted-foreground">
-                    info@makhanabrand.com
+                    info@Skynxglobals.com
                     <br />
-                    support@makhanabrand.com
+                    support@Skynxglobals.com
                   </p>
                 </div>
               </div>
-              
+
               <div className="flex items-start">
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-[#0D0D0D] bg-[#E1E1E1] opacity 10.0% text-20px">
                   <Phone className="h-5 w-5 text-primary" />
                 </div>
                 <div className="ml-4">
-                  <h4 className="mb-2 block text-16px font-medium text-[#0D0D0D] text-start">Call Us</h4>
+                  <h4 className="mb-2 block text-16px font-medium text-[#0D0D0D] text-start">
+                    Call Us
+                  </h4>
                   <p className="mt-2 text-[#737373] text-16px text-start text-muted-foreground">
                     +1 (555) 123-4567
                     <br />
@@ -204,21 +235,35 @@ const ContactSection = () => {
                 </div>
               </div>
             </div>
-            
+
             <div>
-              <h3 className="mb-2 block text-20px font-medium text-[#0D0D0D] text-start">Business Hours</h3>
+              <h3 className="mb-2 block text-20px font-medium text-[#0D0D0D] text-start">
+                Business Hours
+              </h3>
               <div className="mt-4 space-y-2">
                 <div className="flex justify-between">
-                  <span className="mt-2 text-[#737373] text-16px text-start text-muted-foreground">Monday - Friday</span>
-                  <span className="mb-2 block text-16px font-medium text-[#0D0D0D] text-start">9:00 AM - 6:00 PM</span>
+                  <span className="mt-2 text-[#737373] text-16px text-start text-muted-foreground">
+                    Monday - Friday
+                  </span>
+                  <span className="mb-2 block text-16px font-medium text-[#0D0D0D] text-start">
+                    9:00 AM - 6:00 PM
+                  </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="mt-2 text-[#737373] text-16px text-start text-muted-foreground">Saturday</span>
-                  <span className="mb-2 block text-16px font-medium text-[#0D0D0D] text-start">10:00 AM - 4:00 PM</span>
+                  <span className="mt-2 text-[#737373] text-16px text-start text-muted-foreground">
+                    Saturday
+                  </span>
+                  <span className="mb-2 block text-16px font-medium text-[#0D0D0D] text-start">
+                    10:00 AM - 4:00 PM
+                  </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="mt-2 text-[#737373] text-16px text-start text-muted-foreground">Sunday</span>
-                  <span className="mb-2 block text-16px font-medium text-[#0D0D0D] text-start">Closed</span>
+                  <span className="mt-2 text-[#737373] text-16px text-start text-muted-foreground">
+                    Sunday
+                  </span>
+                  <span className="mb-2 block text-16px font-medium text-[#0D0D0D] text-start">
+                    Closed
+                  </span>
                 </div>
               </div>
             </div>

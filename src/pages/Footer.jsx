@@ -16,7 +16,7 @@ export default function Footer() {
             <h5 className="font-semibold mb-4">Quick Links</h5>
             <ul className="space-y-2">
               <li>
-                <Link to="#" className="text-gray-400 hover:text-white">
+                <Link to="/privacy-policy" className="text-gray-400 hover:text-white">
                   Privacy Policy
                 </Link>
               </li>
@@ -66,10 +66,11 @@ export default function Footer() {
             <h5 className="text-start font-semibold mb-4">Location</h5>
             <ul classname="text-start space-y-2">
               <li>
-                <p className="text-start">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Voluptate fugit saepe aliquid rem similique corporis neque
-                debitis deserunt repellat tempore omnis, molestiae quisquam non
-                placeat iure hic repudiandae mollitia totam.</p>
+                <p className="text-start text-gray-400">
+                  {" "}
+                  H.No. 8 1st Flr, Pvt 101, 102, Blk-C, Ranjit Nagar, Patel Nagar
+                  West, New Delhi, Central Delhi- 110008
+                </p>
               </li>
             </ul>
           </div>

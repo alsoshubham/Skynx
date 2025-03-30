@@ -5,7 +5,7 @@ import Layout from "./Layout";
 import Contact from "./pages/Contact";
 import { createBrowserRouter } from "react-router-dom";
 import Blogs from "./pages/Blogs";
-import NewsSection from "./pages/NewsSection";
+import PrivacyPolicy from "./policies/PrivacyPolicy";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -32,8 +32,13 @@ export const router = createBrowserRouter([
         element: <Contact />,
       },
       {
-        path: "/news",
-        element: <NewsSection />,
+        path: "/policies",
+        children: [
+          {
+            path: "privacy-policy",
+            element: <PrivacyPolicy />,
+          }
+        ]
       }
     ],
   },

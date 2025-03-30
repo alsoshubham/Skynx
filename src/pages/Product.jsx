@@ -4,7 +4,7 @@ export default function Product() {
   return (
     <section className="py-12 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <h3 className="text-3xl font-serif mb-12 text-center">Our Products</h3>
+        <h3 className="font-medium text-4xl  font-serif text-center text-[#0D0D0D] mb-12">Our Products</h3>
         <div className="grid md:grid-cols-3 gap-8">
           {[
             {
