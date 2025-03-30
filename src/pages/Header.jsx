@@ -20,9 +20,11 @@ export default function Header() {
             <Link to="/" className="text-gray-800 hover:text-gray-600">
               Home
             </Link>
+            <Link to="/product" className="text-gray-800 hover:text-gray-600">
             <button className="bg-black text-white px-6 py-2 hover:bg-gray-800 transition">
               Buy Now
             </button>
+            </Link>
             <Link to="/about" className="text-gray-800 hover:text-gray-600">
               About Us
             </Link>
@@ -51,7 +53,7 @@ export default function Header() {
             <Link to="/" className="block px-3 py-2 text-gray-800">
               Home
             </Link>
-            <Link to="/buy" className="block px-3 py-2 text-gray-800">
+            <Link to="/product" className="block px-3 py-2 text-gray-800">
               Buy Now
             </Link>
             <Link to="/about" className="block px-3 py-2 text-gray-800">

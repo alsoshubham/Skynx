@@ -3,6 +3,7 @@ import Product from "./Product";
 import About from "./About";
 import Blogs from "./Blogs";
 import Contact from "./Contact";
+import { Link } from "react-router-dom";
 export default function Home() {
   return (
     <>
@@ -18,10 +19,12 @@ export default function Home() {
                 to perfection. A healthy snack that's both delicious and
                 nutritious.
               </p>
+              <Link to="/contact">
               <button className="bg-black text-white px-8 py-3 flex items-center space-x-2 hover:bg-gray-800 transition">
                 <span>Shop Now</span>
                 <ArrowRight size={20} />
               </button>
+              </Link>
             </div>
             <div className="aspect-[16/9] overflow-hidden rounded-lg shadow-xl">
               <img
