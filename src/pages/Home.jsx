@@ -18,6 +18,11 @@ export default function Home() {
                 to perfection. A healthy snack that's both delicious and
                 nutritious.
               </p>
+              <br />
+              <p>
+              Please contact us directly via <strong>WhatsApp</strong> to place your orders.
+              </p>
+              <br />
               <Link to="/contact">
               <button className="bg-black text-white px-8 py-3 flex items-center space-x-2 hover:bg-gray-800 transition">
                 <span>Shop Now</span>
