@@ -1,8 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import Product from "./Product";
-import About from "./About";
 import Blogs from "./Blogs";
-import Contact from "./Contact";
+import Contact from "../components/Contact";
 import { Link } from "react-router-dom";
 export default function Home() {
   return (
@@ -30,13 +29,12 @@ export default function Home() {
               <img
                 src="https://i.pinimg.com/474x/09/fb/f5/09fbf57b99b2589276dc8f4557734de7.jpg"
                 alt="Makhana Product"
-                className="rounded-lg shadow-xl aspect-ratio-16/9"
+                className="rounded-lg shadow-xl aspect-ratio-16/9 max-w-100% h-auto object-cover"
               />
             </div>
           </div>
           <Product />
           <Blogs />
-          <About />
           <Contact />
         </div>
       </section>

@@ -33,7 +33,7 @@ export default function Product() {
               <img
                 src={product.image}
                 alt={product.name}
-                className="w-full h-48 object-cover rounded-lg mb-4 transition-transform duration-700 hover:scale-105"
+                className="w-full h-48 object-cover max-w-100% rounded-lg mb-0 transition-transform duration-700 hover:scale-105"
               />
               <h4 className="text-xl mb-2">{product.name}</h4>
               <p className="text-sm text-[#0D0D0D] mb-4">{product.description}</p>

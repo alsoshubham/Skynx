@@ -16,27 +16,27 @@ export default function Footer() {
             <h5 className="font-semibold mb-4">Quick Links</h5>
             <ul className="space-y-2">
               <li>
-                <Link to="/privacy-policy" className="text-gray-400 hover:text-white">
+                <Link to="/policies/privacy-policy" className="text-gray-400 hover:text-white">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link to="#" className="text-gray-400 hover:text-white">
+                <Link to="/policies/shipping-policy" className="text-gray-400 hover:text-white">
                   Shipping Policy
                 </Link>
               </li>
               <li>
-                <Link to="#" className="text-gray-400 hover:text-white">
+                <Link to="/policies/refund-policy" className="text-gray-400 hover:text-white">
                   Refund Policy
                 </Link>
               </li>
               <li>
-                <Link to="#" className="text-gray-400 hover:text-white">
+                <Link to="/policies/terms-of-services" className="text-gray-400 hover:text-white">
                   Terms of Services
                 </Link>
               </li>
               <li>
-                <Link to="#" className="text-gray-400 hover:text-white">
+                <Link to="/sitemap" className="text-gray-400 hover:text-white">
                   Sitemap
                 </Link>
               </li>
