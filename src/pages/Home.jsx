@@ -9,7 +9,7 @@ import MakhanaProduct from "../assets/MakhanaProduct.png";
 export default function Home() {
   return (
     <>
-      <section className="pt-24 pb-12 md:pt-32 md:pb-20">
+      <section className="pt-14 pb-12 md:pt-24 md:pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
