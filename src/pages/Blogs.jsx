@@ -1,12 +1,12 @@
 import React, { useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 const blogPosts = [
   {
     id: 1,
     title: "The Nutritional Benefits of Makhana You Should Know",
-    excerpt:
+    description:
       "Explore the incredible health benefits of incorporating makhana into your daily diet.",
-    date: "June 10, 2023",
     category: "Health",
     imagePath:
       "https://images.unsplash.com/photo-1505576399279-565b52d4ac71?q=80&w=1587&auto=format&fit=crop",
@@ -14,9 +14,8 @@ const blogPosts = [
   {
     id: 2,
     title: "Creative Makhana Recipes to Try This Weekend",
-    excerpt:
+    description:
       "Discover delicious and innovative ways to enjoy makhana beyond the traditional snack.",
-    date: "May 25, 2023",
     category: "Recipes",
     imagePath:
       "https://images.unsplash.com/photo-1561043433-aaf687c4cf04?q=80&w=1470&auto=format&fit=crop",
@@ -24,9 +23,8 @@ const blogPosts = [
   {
     id: 3,
     title: "The Ancient History of Makhana in Traditional Medicine",
-    excerpt:
+    description:
       "Learn about the historical significance of makhana in Ayurvedic and traditional healing practices.",
-    date: "April 18, 2023",
     category: "Culture",
     imagePath:
       "https://images.unsplash.com/photo-1481671703460-040cb8a2d909?q=80&w=1587&auto=format&fit=crop",
@@ -35,10 +33,11 @@ const blogPosts = [
 
 const Blogs = () => {
   const blogsRef = useRef(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!blogsRef.current) {
-      console.error("blogsRef is not assigned"); // Debug log
+      console.error("blogsRef is not assigned");
       return;
     }
 
@@ -46,7 +45,7 @@ const Blogs = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            console.log("Element is intersecting:", entry.target); // Debug log
+            console.log("Element is intersecting:", entry.target);
             entry.target.classList.add("animate-fade-in");
             observer.unobserve(entry.target);
           }
@@ -57,7 +56,7 @@ const Blogs = () => {
 
     const blogElements = blogsRef.current.querySelectorAll(".blog-item");
     if (!blogElements) {
-      console.error("No blog elements found"); // Debug log
+      console.error("No blog elements found");
       return;
     }
 
@@ -79,7 +78,7 @@ const Blogs = () => {
           <h2 className="font-medium text-4xl  font-serif text-center text-[#0D0D0D] mb-12">
             Latest from Our Blog
           </h2>
-          <p className="section-description">
+          <p className="section-description text-[#737373] mt-4 max-w-2xl mx-auto text-2xl">
             Explore our articles for insights, recipes, and stories about
             makhana.
           </p>
@@ -91,6 +90,7 @@ const Blogs = () => {
               key={post.id}
               className="blog-item overflow-hidden rounded-xl bg-white transition-all duration-300 hover:shadow-lg hover-lift subtle-border"
               style={{ animationDelay: `${index * 100}ms` }}
+              onClick={() => navigate(`/blogs/${post.category.toLowerCase()}`)}
             >
               <div className="aspect-[16/9] overflow-hidden">
                 <img
@@ -102,21 +102,17 @@ const Blogs = () => {
 
               <div className="p-6">
                 <div className="mb-3 flex items-center space-x-2">
-                  <span className="inline-block rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
+                  <span className="inline-block rounded-full bg-primary/10 px-3 py-1 text-xl font-medium text-primary text-[#FCA935]">
                     {post.category}
-                  </span>
-                  <span className="text-xs text-muted-foreground">•</span>
-                  <span className="text-xs text-muted-foreground">
-                    {post.date}
                   </span>
                 </div>
 
                 <h3 className="text-xl font-medium">{post.title}</h3>
-                <p className="mt-2 text-muted-foreground">{post.excerpt}</p>
+                <p className="mt-2 text-muted-foreground">{post.description}</p>
 
                 <a
                   href="#"
-                  className="mt-4 inline-flex items-center text-sm font-medium text-primary"
+                  className="mt-4 inline-flex items-center text-sm font-medium text-primary hover:text-[#FCA935]"
                 >
                   Read More
                   <svg
@@ -138,15 +134,6 @@ const Blogs = () => {
               </div>
             </div>
           ))}
-        </div>
-
-        <div className="mt-16 text-center">
-          <a
-            href="#"
-            className="rounded-full border bg-white px-8 py-3 text-base font-medium text-primary shadow-sm transition-all hover:bg-secondary"
-          >
-            View All Posts
-          </a>
         </div>
       </div>
     </section>

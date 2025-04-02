@@ -13,21 +13,17 @@ export default function Home() {
               <h2 className="text-4xl md:text-5xl font-serif mb-6">
                 Premium Quality Makhana
               </h2>
-              <p className="text-gray-600 mb-8">
+              <p className="text-[#737373] mt-4 max-w-2xl mx-auto text-2xl">
                 Experience the finest fox nuts, carefully selected and roasted
                 to perfection. A healthy snack that's both delicious and
                 nutritious.
               </p>
               <br />
-              <p>
-              Please contact us directly via <strong>WhatsApp</strong> to place your orders.
-              </p>
-              <br />
               <Link to="/contact">
-              <button className="bg-black text-white px-8 py-3 flex items-center space-x-2 hover:bg-gray-800 transition">
-                <span>Shop Now</span>
-                <ArrowRight size={20} />
-              </button>
+                <button className="bg-black text-white px-8 py-3 flex items-center space-x-2 hover:bg-gray-800 transition">
+                  <span>Shop Now</span>
+                  <ArrowRight size={20} />
+                </button>
               </Link>
             </div>
             <div className="aspect-[16/9] overflow-hidden rounded-lg shadow-xl">
