@@ -90,7 +90,7 @@ const Blogs = () => {
               key={post.id}
               className="blog-item overflow-hidden rounded-xl bg-white transition-all duration-300 hover:shadow-lg hover-lift subtle-border"
               style={{ animationDelay: `${index * 100}ms` }}
-              onClick={() => navigate(`/blogs/${post.category.toLowerCase()}`)}
+              onClick={() => navigate(`/blog/${post.category.toLowerCase()}`)} // Navigate to the new route
             >
               <div className="aspect-[16/9] overflow-hidden">
                 <img

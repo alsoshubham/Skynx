@@ -1,15 +1,58 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-const blogPosts = [
-  // ...existing blogPosts array from Blogs.jsx...
-];
-
 const CategoryBlogs = () => {
-  const { category } = useParams(); // Get category from URL
-  const filteredBlogs = blogPosts.filter(
-    (post) => post.category.toLowerCase() === category
-  );
+  const { category } = useParams();
+  const [blogs, setBlogs] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      if (!category) {
+        setError("Invalid category");
+        setLoading(false);
+        return;
+      }
+
+      try {
+        const response = await fetch(
+          `https://www.reddit.com/r/${encodeURIComponent(category)}/search.json?restrict_sr=1&sort=relevance&q=*`
+        );
+        if (!response.ok) {
+          throw new Error("Failed to fetch blogs");
+        }
+
+        const data = await response.json();
+        const posts = data.data.children.map((child) => ({
+          id: child.data.id,
+          title: child.data.title,
+          description: child.data.selftext?.trim() ? child.data.selftext : "No description available",
+          imagePath:
+            child.data.thumbnail && child.data.thumbnail.startsWith("http")
+              ? child.data.thumbnail
+              : "https://via.placeholder.com/150",
+        }));
+
+        setBlogs(posts);
+        setError(null);
+      } catch (err) {
+        setError(`Error fetching blogs: ${err.message}`);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBlogs();
+  }, [category]);
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
 
   return (
     <section className="bg-white py-20">
@@ -18,10 +61,10 @@ const CategoryBlogs = () => {
           {category.charAt(0).toUpperCase() + category.slice(1)} Blogs
         </h2>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-          {filteredBlogs.map((post) => (
+          {blogs.map((post) => (
             <div
               key={post.id}
-              className="overflow-hidden rounded-xl bg-white transition-all duration-300 hover:shadow-lg hover-lift subtle-border"
+              className="overflow-hidden rounded-xl bg-white transition-all duration-300 hover:shadow-lg subtle-border"
             >
               <div className="aspect-[16/9] overflow-hidden">
                 <img

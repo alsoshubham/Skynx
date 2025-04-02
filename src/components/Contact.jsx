@@ -1,16 +1,19 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Mail, MapPin, Phone } from "lucide-react";
+import emailjs from "@emailjs/browser";
+import { toast } from "react-toastify"; // Import toast
 
 const ContactSection = () => {
   const formRef = useRef(null);
   const infoRef = useRef(null);
   const [formErrors, setFormErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     // Create an IntersectionObserver to observe when elements come into view
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
+        entries.forEach((entry) =>{
           if (entry.isIntersecting) {
             // Add animation classes when elements are in view
             if (entry.target === formRef.current) {
@@ -48,18 +51,37 @@ const ContactSection = () => {
     return errors;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!formRef.current) return;
+
     const formData = new FormData(e.target);
     const errors = validateForm(formData);
     if (Object.keys(errors).length > 0) {
       setFormErrors(errors);
       return;
     }
-    // Form submission logic would go here
-    alert(
-      "Form submitted! This would be connected to a backend in a real implementation."
-    );
+
+    try {
+      setIsSubmitting(true);
+
+      await emailjs.sendForm(
+        "service_e3u1m9y", // Replace with your EmailJS service ID
+        "template_imhwvhl", // Replace with your EmailJS template ID
+        formRef.current,
+        "n2azYNJpXqz55Fjvi" // Replace with your EmailJS public key
+      );
+
+      toast.success("Message sent successfully!"); // Success toast
+      formRef.current.reset();
+      setFormErrors({});
+    } catch (error) {
+      console.error("Failed to send message:", error);
+      toast.error("Something went wrong. Please try again later."); // Error toast
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -169,8 +191,9 @@ const ContactSection = () => {
             <button
               type="submit"
               className="w-full rounded-lg bg-primary px-5 py-3 text-center text-14px font-medium bg-black text-white transition-colors hover:bg-primary/90"
+              disabled={isSubmitting}
             >
-              Send Message
+              {isSubmitting ? "Sending..." : "Send Message"}
             </button>
           </form>
 
@@ -228,9 +251,9 @@ const ContactSection = () => {
                     Call Us
                   </h4>
                   <p className="mt-2 text-[#737373] text-16px text-start text-muted-foreground">
-                    +1 (555) 123-4567
+                    +91 9540192363
                     <br />
-                    +1 (555) 987-6543
+                    + 011-45053864
                   </p>
                 </div>
               </div>
