@@ -1,8 +1,11 @@
 import { ArrowRight } from "lucide-react";
+import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
+import { SiMedium } from "react-icons/si";
 import Product from "./Product";
 import Blogs from "./Blogs";
 import Contact from "../components/Contact";
 import { Link } from "react-router-dom";
+import MakhanaProduct from "../assets/MakhanaProduct.png";
 export default function Home() {
   return (
     <>
@@ -20,17 +23,43 @@ export default function Home() {
               </p>
               <br />
               <Link to="/contact">
-                <button className="bg-black text-white px-8 py-3 flex items-center space-x-2 hover:bg-gray-800 transition">
+                <button className="bg-black text-white px-8 py-3 flex items-center space-x-2 hover:bg-[#FCA935] transition">
                   <span>Shop Now</span>
                   <ArrowRight size={20} />
                 </button>
               </Link>
+              <br />
+              <div className="flex mt-4 space-x-5">
+                <Link
+                  to="https://x.com/"
+                  className="text-[#0D0D0D] hover:text-[#FCA935]"
+                >
+                  <FaTwitter size={24} />
+                </Link>
+                <Link
+                  to="https://"
+                  className="text-[#0D0D0D] hover:text-[#FCA935]"
+                >
+                  <FaFacebook size={24} />
+                </Link>
+                <Link
+                  to="https://www.instagram.com/"
+                  className="text-[#ODODOD] hover:text-[#FCA935]"
+                >
+                  <FaInstagram size={24} />
+                </Link>
+                <Link
+                  to="https://medium.com/"
+                  className="text-[#0D0D0D] hover:text-[#FCA935]">
+                  <SiMedium size={24} />
+                  </Link>
+              </div>
             </div>
-            <div className="aspect-[16/9] overflow-hidden rounded-lg shadow-xl">
+            <div className="overflow-hidden rounded-lg shadow-xl">
               <img
-                src="https://i.pinimg.com/474x/09/fb/f5/09fbf57b99b2589276dc8f4557734de7.jpg"
+                src={MakhanaProduct}
                 alt="Makhana Product"
-                className="rounded-lg shadow-xl aspect-ratio-16/9 max-w-100% h-auto object-cover"
+                className="rounded-lg shadow-xl max-w-full h-auto"
               />
             </div>
           </div>

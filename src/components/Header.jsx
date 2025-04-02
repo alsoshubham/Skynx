@@ -21,7 +21,7 @@ export default function Header() {
               Home
             </Link>
             <Link to="/product" className="text-gray-800 hover:text-gray-600">
-            <button className="bg-black text-white px-6 py-2 hover:bg-gray-800 transition">
+            <button className="bg-black text-white px-6 py-2 hover:bg-[#FCA935] transition">
               Buy Now
             </button>
             </Link>
