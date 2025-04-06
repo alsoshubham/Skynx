@@ -17,7 +17,9 @@ const CategoryBlogs = () => {
 
       try {
         const response = await fetch(
-          `https://www.reddit.com/r/${encodeURIComponent(category)}/search.json?restrict_sr=1&sort=relevance&q=*`
+          `https://www.reddit.com/r/${encodeURIComponent(
+            category
+          )}/search.json?restrict_sr=1&sort=relevance&q=*`
         );
         if (!response.ok) {
           throw new Error("Failed to fetch blogs");
@@ -27,7 +29,9 @@ const CategoryBlogs = () => {
         const posts = data.data.children.map((child) => ({
           id: child.data.id,
           title: child.data.title,
-          description: child.data.selftext?.trim() ? child.data.selftext : "No description available",
+          description: child.data.selftext?.trim()
+            ? child.data.selftext
+            : "No description available",
           imagePath:
             child.data.thumbnail && child.data.thumbnail.startsWith("http")
               ? child.data.thumbnail
