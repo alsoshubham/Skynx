@@ -1,4 +1,5 @@
 import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
+import { SiMedium } from "react-icons/si";
 import { Link } from "react-router-dom";
 
 export default function Footer() {
@@ -16,22 +17,34 @@ export default function Footer() {
             <h5 className="font-semibold mb-4">Quick Links</h5>
             <ul className="space-y-2">
               <li>
-                <Link to="/policies/privacy-policy" className="text-gray-400 hover:text-white">
+                <Link
+                  to="/policies/privacy-policy"
+                  className="text-gray-400 hover:text-white"
+                >
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link to="/policies/shipping-policy" className="text-gray-400 hover:text-white">
+                <Link
+                  to="/policies/shipping-policy"
+                  className="text-gray-400 hover:text-white"
+                >
                   Shipping Policy
                 </Link>
               </li>
               <li>
-                <Link to="/policies/refund-policy" className="text-gray-400 hover:text-white">
+                <Link
+                  to="/policies/refund-policy"
+                  className="text-gray-400 hover:text-white"
+                >
                   Refund Policy
                 </Link>
               </li>
               <li>
-                <Link to="/policies/terms-of-services" className="text-gray-400 hover:text-white">
+                <Link
+                  to="/policies/terms-of-services"
+                  className="text-gray-400 hover:text-white"
+                >
                   Terms of Services
                 </Link>
               </li>
@@ -68,8 +81,8 @@ export default function Footer() {
               <li>
                 <p className="text-start text-gray-400">
                   {" "}
-                  H.No. 8 1st Flr, Pvt 101, 102, Blk-C, Ranjit Nagar, Patel Nagar
-                  West, New Delhi, Central Delhi- 110008
+                  H.No. 8 1st Flr, Pvt 101, 102, Blk-C, Ranjit Nagar, Patel
+                  Nagar West, New Delhi, Central Delhi- 110008
                 </p>
               </li>
             </ul>
@@ -85,6 +98,12 @@ export default function Footer() {
               </Link>
               <Link to="#" className="text-gray-400 hover:text-white">
                 <FaInstagram size={24} />
+              </Link>
+              <Link
+                to="https://medium.com/@skynxglobalsindia"
+                className="text-gray-400 hover:text-white"
+              >
+                <SiMedium size={24} />
               </Link>
             </div>
           </div>

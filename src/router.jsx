@@ -9,6 +9,7 @@ import PrivacyPolicy from "./policies/PrivacyPolicy";
 import RefundPolicy from "./policies/RefundPolicy";
 import ShippingPolicy from "./policies/ShippingPolicy";
 import TermsOfServices from "./policies/TermsOfServices";
+import CategoryBlogs from "./pages/CategoryBlogs";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -25,6 +26,10 @@ export const router = createBrowserRouter([
       {
         path: "/blog",
         element: <Blogs />,
+      },
+      {
+        path: "/blog/:category",
+        element: <CategoryBlogs />,
       },
       {
         path: "/product",
@@ -51,11 +56,10 @@ export const router = createBrowserRouter([
           },
           {
             path: "terms-of-services",
-            element: <TermsOfServices/>,
-          }
-        ]
-      }
+            element: <TermsOfServices />,
+          },
+        ],
+      },
     ],
   },
 ]);
-

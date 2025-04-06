@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
-
+import SpicyMakhana from "../assets/SpicyMakhana.jpg";
+import ClassicMakhana from "../assets/ClassicMakhana.png";
 export default function Product() {
   const navigate = useNavigate();
 
@@ -16,14 +17,12 @@ export default function Product() {
             {
               name: "Classic Makhana",
               description: "The original flavor that started it all. ",
-              image:
-                "https://img.freepik.com/premium-photo/makhana-also-called-as-lotus-seeds-fox-nuts-are-popular-dry-snacks-from-india-served-bowl-selective-focus_466689-19086.jpg?ga=GA1.1.958995320.1740890875&semt=ais_hybrid",
+              image:ClassicMakhana,
             },
             {
               name: "Spicy Makhana",
               description: "A perfect blend of spices for a fiery kick.",
-              image:
-                "https://img.freepik.com/premium-photo/roasted-phool-makhana-crispy-lotus-pops-seed-served-bowl-selective-focus_466689-46259.jpg?w=1380",
+              image: SpicyMakhana,
             },
             {
               name: "Caramel Makhana",

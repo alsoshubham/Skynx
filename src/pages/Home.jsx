@@ -9,7 +9,7 @@ import MakhanaProduct from "../assets/MakhanaProduct.png";
 export default function Home() {
   return (
     <>
-      <section className="pt-14 pb-12 md:pt-24 md:pb-20">
+      <section className="pb-12 md:pt-6 md:pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
@@ -20,6 +20,13 @@ export default function Home() {
                 Experience the finest fox nuts, carefully selected and roasted
                 to perfection. A healthy snack that's both delicious and
                 nutritious.
+              </p>
+              <br />
+              <p className="text-[#737373] mt-4 max-w-2xl mx-auto text-xl">
+                Discover the rich flavors and health benefits of our premium
+                makhana. Perfect for snacking, cooking, or adding to your
+                favorite dishes. Elevate your culinary experience with Skynx
+                Globals.
               </p>
               <br />
               <Link to="/contact">
@@ -49,7 +56,7 @@ export default function Home() {
                   <FaInstagram size={24} />
                 </Link>
                 <Link
-                  to="https://medium.com/"
+                  to="https://medium.com/@skynxglobalsindia"
                   className="text-[#0D0D0D] hover:text-[#FCA935]">
                   <SiMedium size={24} />
                   </Link>
