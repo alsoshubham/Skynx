@@ -21,10 +21,10 @@ export default function About() {
               export meets global standards of quality, safety, and taste.
               Whether it's facilitating seamless cross-border shipments or
               promoting India's finest agro-products on the world stage, our
-              mission is to become India’s most reliable partner in global
+              mission is to become India's most reliable partner in global
               trade. With a passion for excellence and a commitment to trust and
               transparency, Skynx Global is not just exporting goods — we are
-              exporting India's pride to the world.
+              exporting India's pride to the world.
             </p>
           </div>
 
