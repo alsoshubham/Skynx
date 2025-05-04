@@ -110,6 +110,7 @@ export default function Footer() {
         </div>
         <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
           <p>&copy; 2024 Skynx Globals. All rights reserved.</p>
+          <p>Designed and Developed by <a href="https://www.linkedin.com/in/alsoshubham/">alsoshubham</a></p>
         </div>
       </div>
     </footer>
