@@ -1,11 +1,13 @@
 import { ArrowRight } from "lucide-react";
 import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
 import { SiMedium } from "react-icons/si";
-import Product from "./Product";
 import Blogs from "./Blogs";
 import Contact from "../components/Contact";
 import { Link } from "react-router-dom";
 import MakhanaProduct from "../assets/MakhanaProduct.png";
+import FeaturedProducts from "./FeaturedProduct";
+import Testimonial from "./Testimonial";
+import CategorySection from "./CategorySection";
 export default function Home() {
   return (
     <>
@@ -13,30 +15,25 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-4xl md:text-5xl font-serif mb-6">
-                Premium Quality Makhana
+              <h2 className="text-4xl md:text-5xl font-serif">
+                Discover the Finest Spices & Premium Makhana
               </h2>
               <p className="text-[#737373] mt-4 max-w-2xl mx-auto text-2xl">
-                Experience the finest fox nuts, carefully selected and roasted
-                to perfection. A healthy snack that's both delicious and
-                nutritious.
+                Welcome to Skyn Globals, your premier destination for the finest spices and premium Makhana.
               </p>
               <br />
-              <p className="text-[#737373] mt-4 max-w-2xl mx-auto text-xl">
-                Discover the rich flavors and health benefits of our premium
-                makhana. Perfect for snacking, cooking, or adding to your
-                favorite dishes. Elevate your culinary experience with Skynx
-                Globals.
+              <p className="text-[#737373] max-w-2xl mx-auto text-xl">
+                Explore our wide range of spices sourced from the best farms, and indulge in the goodness of our premium Makhana.
               </p>
               <br />
-              <Link to="/contact">
+              <Link to="/products">
                 <button className="bg-black text-white px-8 py-3 flex items-center space-x-2 hover:bg-[#FCA935] transition">
                   <span>Shop Now</span>
                   <ArrowRight size={20} />
                 </button>
               </Link>
               <br />
-              <div className="flex mt-4 space-x-5">
+              <div className="flex space-x-5">
                 <Link
                   to="https://x.com/"
                   className="text-[#0D0D0D] hover:text-[#FCA935]"
@@ -70,7 +67,9 @@ export default function Home() {
               />
             </div>
           </div>
-          <Product />
+          <CategorySection />
+          <FeaturedProducts/>
+          <Testimonial/>
           <Blogs />
           <Contact />
         </div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Mail, MapPin, Phone } from "lucide-react";
 import emailjs from "@emailjs/browser";
 import { toast } from "react-toastify"; // Import toast
@@ -13,7 +13,7 @@ const ContactSection = () => {
     // Create an IntersectionObserver to observe when elements come into view
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) =>{
+        entries.forEach((entry) => {
           if (entry.isIntersecting) {
             // Add animation classes when elements are in view
             if (entry.target === formRef.current) {
@@ -96,13 +96,15 @@ const ContactSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-16 lg:grid-cols-2">
+        {/* Form on top, info section below */}
+        <div className="max-w-3xl mx-auto">
           <form
             ref={formRef}
             onSubmit={handleSubmit}
-            className="space-y-6 rounded-2xl bg-white text-black p-8 shadow-sm"
+            className="space-y-6 rounded-2xl bg-white text-black p-8 shadow-sm mb-12"
           >
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+            {/* Align form fields in two columns on desktop, one column on mobile */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label
                   htmlFor="name"
@@ -115,7 +117,7 @@ const ContactSection = () => {
                   id="name"
                   name="name"
                   aria-label="Name"
-                  className="w-full rounded-lg border border-border bg-transparent px-4 py-2.5 text-foreground text-black transition-colors focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                  className="w-full rounded-lg border border-border bg-transparent px-4 py-2.5 text-black"
                   placeholder="Your name"
                   required
                 />
@@ -123,7 +125,25 @@ const ContactSection = () => {
                   <p className="text-red-500 text-sm">{formErrors.name}</p>
                 )}
               </div>
-
+              <div>
+                <label
+                  htmlFor="company"
+                  className="mb-2 block text-14px font-medium text-[#0D0D0D] text-start"
+                >
+                  Company Name
+                </label>
+                <input
+                  type="text"
+                  id="company"
+                  name="company"
+                  aria-label="Company Name"
+                  className="w-full rounded-lg border border-border bg-transparent px-4 py-2.5 text-black"
+                  placeholder="Your company name"
+                  required
+                />
+              </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label
                   htmlFor="email"
@@ -136,7 +156,7 @@ const ContactSection = () => {
                   id="email"
                   name="email"
                   aria-label="Email"
-                  className="w-full rounded-lg border border-border bg-transparent px-4 py-2.5 text-foreground text-black transition-colors focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                  className="w-full rounded-lg border border-border bg-transparent px-4 py-2.5 text-black"
                   placeholder="Your email"
                   required
                 />
@@ -144,42 +164,122 @@ const ContactSection = () => {
                   <p className="text-red-500 text-sm">{formErrors.email}</p>
                 )}
               </div>
+              <div>
+                <label
+                  htmlFor="phone"
+                  className="mb-2 block text-14px font-medium text-[#0D0D0D] text-start"
+                >
+                  Phone Number
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  aria-label="Phone Number"
+                  className="w-full rounded-lg border border-border bg-transparent px-4 py-2.5 text-black"
+                  placeholder="Your phone number"
+                  required
+                />
+              </div>
             </div>
-
-            <div>
-              <label
-                htmlFor="subject"
-                className="mb-2 block text-14px font-medium text-[#0D0D0D] text-start"
-              >
-                Subject
-              </label>
-              <input
-                type="text"
-                id="subject"
-                name="subject"
-                aria-label="Subject"
-                className="w-full rounded-lg border border-border bg-transparent px-4 py-2.5 text-foreground text-black transition-colors focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-                placeholder="Subject"
-                required
-              />
-              {formErrors.subject && (
-                <p className="text-red-500 text-sm">{formErrors.subject}</p>
-              )}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label
+                  htmlFor="country"
+                  className="mb-2 block text-14px font-medium text-[#0D0D0D] text-start"
+                >
+                  Country
+                </label>
+                <input
+                  type="text"
+                  id="country"
+                  name="country"
+                  aria-label="Country"
+                  className="w-full rounded-lg border border-border bg-transparent px-4 py-2.5 text-black"
+                  placeholder="Your country"
+                  required
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="businessType"
+                  className="mb-2 block text-14px font-medium text-[#0D0D0D] text-start"
+                >
+                  Business Type
+                </label>
+                <select
+                  id="businessType"
+                  name="businessType"
+                  aria-label="Business Type"
+                  className="w-full rounded-lg border border-border bg-transparent px-4 py-2.5 text-black"
+                  required
+                >
+                  <option value="">Select business type</option>
+                  <option value="restaurant">Restaurant</option>
+                  <option value="food-manufacturer">Food Manufacturer</option>
+                  <option value="retailer">Retailer</option>
+                  <option value="distributor">Distributor</option>
+                  <option value="exporter">Exporter</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
             </div>
-
-            <div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label
+                  htmlFor="products"
+                  className="mb-2 block text-14px font-medium text-[#0D0D0D] text-start"
+                >
+                  Products of Interest
+                </label>
+                <input
+                  type="text"
+                  id="products"
+                  name="products"
+                  aria-label="Products of Interest"
+                  className="w-full rounded-lg border border-border bg-transparent px-4 py-2.5 text-black"
+                  placeholder="e.g., Turmeric powder, Red chili powder"
+                  required
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="quantity"
+                  className="mb-2 block text-14px font-medium text-[#0D0D0D] text-start"
+                >
+                  Expected Quantity
+                </label>
+                <select
+                  id="quantity"
+                  name="quantity"
+                  aria-label="Expected Quantity"
+                  className="w-full rounded-lg border border-border bg-transparent px-4 py-2.5 text-black"
+                  required
+                >
+                  <option value="">Select quantity range</option>
+                  <option value="1-10kg">1-10 kg</option>
+                  <option value="10-50kg">10-50 kg</option>
+                  <option value="50-100kg">50-100 kg</option>
+                  <option value="100-500kg">100-500 kg</option>
+                  <option value="500kg-1ton">500 kg - 1 ton</option>
+                  <option value="1ton+">1 ton+</option>
+                </select>
+              </div>
+            </div>
+            
+            <div className="md:col-span-2">
               <label
                 htmlFor="message"
                 className="mb-2 block text-14px font-medium text-[#0D0D0D] text-start"
               >
-                Message
+                Detailed Requirements
               </label>
               <textarea
                 id="message"
                 name="message"
                 aria-label="Message"
                 rows={5}
-                className="w-full rounded-lg border border-border bg-transparent px-4 py-2.5 text-foreground text-black transition-colors focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                className="w-full rounded-lg border border-border bg-transparent px-4 py-2.5 text-black"
                 placeholder="Your message"
                 required
               ></textarea>
@@ -187,17 +287,18 @@ const ContactSection = () => {
                 <p className="text-red-500 text-sm">{formErrors.message}</p>
               )}
             </div>
-
-            <button
-              type="submit"
-              className="w-full rounded-lg bg-primary px-5 py-3 text-center text-14px font-medium bg-black text-white transition-colors hover:bg-primary/90"
-              disabled={isSubmitting}
-            >
-              {isSubmitting ? "Sending..." : "Send Message"}
-            </button>
+            <div className="md:col-span-2">
+              <button
+                type="submit"
+                className="w-full rounded-lg bg-primary px-5 py-3 text-center text-14px font-medium bg-black text-white transition-colors hover:bg-primary/90"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Sending..." : "Send Message"}
+              </button>
+            </div>
           </form>
 
-          <div ref={infoRef} className="space-y-8 lg:pl-8">
+          <div ref={infoRef} className="space-y-8 bg-white/80 rounded-2xl p-8 shadow border border-[#ffe5c2]">
             <div>
               <h3 className="mb-2 block text-20px font-medium text-[#0D0D0D] text-start">
                 Get in Touch
@@ -252,8 +353,7 @@ const ContactSection = () => {
                   </h4>
                   <p className="mt-2 text-[#737373] text-16px text-start text-muted-foreground">
                     +91 9540192363
-                    <br />
-                    + 011-45053864
+                    <br />+ 011-45053864
                   </p>
                 </div>
               </div>
