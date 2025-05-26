@@ -72,25 +72,25 @@ const Blogs = () => {
   }, [blogsRef]);
 
   return (
-    <section id="blog" className="bg-white py-20">
+    <section id="blog" className="bg-white py-12">
       <div className="section-container">
-        <div className="mb-16 text-center">
-          <h2 className="font-medium text-4xl  font-serif text-center text-[#0D0D0D] mb-12">
+        <div className="mb-8 text-center">
+          <h2 className="font-medium text-4xl font-serif text-center text-[#0D0D0D] mb-5">
             Latest from Our Blog
           </h2>
-          <p className="section-description text-[#737373] mt-4 max-w-2xl mx-auto text-2xl">
+          <p className="section-description text-[#737373] max-w-xl mx-auto text-lg">
             Explore our articles for insights, recipes, and stories about
             makhana.
           </p>
         </div>
 
-        <div ref={blogsRef} className="grid grid-cols-1 gap-8 md:grid-cols-3">
+        <div ref={blogsRef} className="grid grid-cols-1 gap-6 md:grid-cols-3">
           {blogPosts.map((post, index) => (
             <div
               key={post.id}
               className="blog-item overflow-hidden rounded-xl bg-white transition-all duration-300 hover:shadow-lg hover-lift subtle-border"
               style={{ animationDelay: `${index * 100}ms` }}
-              onClick={() => navigate(`/blog/${post.category.toLowerCase()}`)} // Navigate to the new route
+              onClick={() => navigate(`/blog/${post.category.toLowerCase()}`)}
             >
               <div className="aspect-[16/9] overflow-hidden">
                 <img
@@ -100,19 +100,19 @@ const Blogs = () => {
                 />
               </div>
 
-              <div className="p-6">
-                <div className="mb-3 flex items-center space-x-2">
-                  <span className="inline-block rounded-full bg-primary/10 px-3 py-1 text-xl font-medium text-primary text-[#FCA935]">
+              <div className="p-4">
+                <div className="mb-2 flex items-center space-x-2">
+                  <span className="inline-block rounded-full bg-primary/10 px-2 py-0.5 text-base font-medium text-primary text-[#FCA935]">
                     {post.category}
                   </span>
                 </div>
 
-                <h3 className="text-xl font-medium">{post.title}</h3>
-                <p className="mt-2 text-muted-foreground">{post.description}</p>
+                <h3 className="text-lg font-medium">{post.title}</h3>
+                <p className="mt-1 text-muted-foreground">{post.description}</p>
 
                 <a
                   href="#"
-                  className="mt-4 inline-flex items-center text-sm font-medium text-primary hover:text-[#FCA935]"
+                  className="mt-3 inline-flex items-center text-sm font-medium text-primary hover:text-[#FCA935]"
                 >
                   Read More
                   <svg

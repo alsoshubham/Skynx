@@ -66,11 +66,11 @@ const TestimonialsSection = () => {
   };
 
   return (
-    <section className="py-20 bg-white text-black">
+    <section className="py-12 bg-white text-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="font-medium text-4xl font-serif text-center text-[#0D0D0D] mb-12">What Our Customers Say</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+        <div className="text-center mb-8">
+          <h2 className="font-medium text-4xl font-serif text-center text-[#0D0D0D] mb-5">What Our Customers Say</h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Real stories from spice and makhana lovers across the globe
           </p>
         </div>
@@ -78,23 +78,23 @@ const TestimonialsSection = () => {
           <button
             aria-label="Scroll testimonials left"
             onClick={() => scroll('left')}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white text-gray-700 hover:bg-gray-200 rounded-full shadow p-2 transition-colors"
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white text-gray-700 hover:bg-gray-200 rounded-full shadow p-1 transition-colors"
             style={{ display: 'block' }}
           >
             <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
           </button>
           <div
             ref={carouselRef}
-            className="flex gap-6 overflow-x-auto scroll-smooth pb-4 hide-scrollbar"
+            className="flex gap-4 overflow-x-auto scroll-smooth pb-2 hide-scrollbar"
             style={{ scrollSnapType: 'x mandatory' }}
           >
             {testimonials.map((testimonial, index) => (
               <div
                 key={index}
-                className="min-w-[320px] max-w-xs flex-shrink-0 bg-white rounded-2xl shadow-lg border border-gray-200 p-6 flex flex-col h-full mx-auto"
+                className="min-w-[280px] max-w-xs flex-shrink-0 bg-white rounded-2xl shadow-lg border border-gray-200 p-4 flex flex-col h-full mx-auto"
                 style={{ scrollSnapAlign: 'center' }}
               >
-                <div className="flex items-center mb-3">
+                <div className="flex items-center mb-2">
                   {[...Array(Math.floor(testimonial.rating))].map((_, i) => (
                     <Star key={i} className="w-5 h-5 text-yellow-400 fill-current drop-shadow" />
                   ))}
@@ -106,7 +106,7 @@ const TestimonialsSection = () => {
                   )}
                   <span className="ml-2 text-gray-700 font-semibold text-sm">({testimonial.rating.toFixed(1)})</span>
                 </div>
-                <p className="text-gray-800 mb-5 italic font-medium">"{testimonial.content}"</p>
+                <p className="text-gray-800 mb-3 italic font-medium">"{testimonial.content}"</p>
                 <div className="flex items-center mt-auto">
                   {/* Default user icon */}
                   <div className="w-12 h-12 rounded-full mr-3 bg-gray-200 flex items-center justify-center border-2 border-gray-300 shadow">
@@ -135,7 +135,7 @@ const TestimonialsSection = () => {
           <button
             aria-label="Scroll testimonials right"
             onClick={() => scroll('right')}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white text-gray-700 hover:bg-gray-200 rounded-full shadow p-2 transition-colors"
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white text-gray-700 hover:bg-gray-200 rounded-full shadow p-1 transition-colors"
             style={{ display: 'block' }}
           >
             <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>

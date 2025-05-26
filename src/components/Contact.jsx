@@ -85,13 +85,13 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="bg-[#f8f8f8] py-20">
+    <section id="contact" className="bg-[#f8f8f8] py-12">
       <div className="section-container">
-        <div className="mb-16 text-center">
-          <h2 className="section-title font-serif text-[#0D0D0D] font-medium text-4xl">
+        <div className="mb-8 text-center">
+          <h2 className="section-title font-serif text-[#0D0D0D] font-medium text-4xl mb-3">
             Contact Us
           </h2>
-          <p className="section-description text-[#737373] mt-4 max-w-2xl mx-auto text-2xl">
+          <p className="section-description text-[#737373] max-w-xl mx-auto text-lg">
             Have questions or feedback? We'd love to hear from you.
           </p>
         </div>
@@ -101,7 +101,7 @@ const ContactSection = () => {
           <form
             ref={formRef}
             onSubmit={handleSubmit}
-            className="space-y-6 rounded-2xl bg-white text-black p-8 shadow-sm mb-12"
+            className="space-y-4 rounded-2xl bg-white text-black p-6 shadow-sm mb-8"
           >
             {/* Align form fields in two columns on desktop, one column on mobile */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -270,7 +270,7 @@ const ContactSection = () => {
             <div className="md:col-span-2">
               <label
                 htmlFor="message"
-                className="mb-2 block text-14px font-medium text-[#0D0D0D] text-start"
+                className="mb-1 block text-14px font-medium text-[#0D0D0D] text-start"
               >
                 Detailed Requirements
               </label>
@@ -279,7 +279,7 @@ const ContactSection = () => {
                 name="message"
                 aria-label="Message"
                 rows={5}
-                className="w-full rounded-lg border border-border bg-transparent px-4 py-2.5 text-black"
+                className="w-full rounded-lg border border-border bg-transparent px-3 py-2 text-black"
                 placeholder="Your message"
                 required
               ></textarea>
@@ -290,7 +290,7 @@ const ContactSection = () => {
             <div className="md:col-span-2">
               <button
                 type="submit"
-                className="w-full rounded-lg bg-primary px-5 py-3 text-center text-14px font-medium bg-black text-white transition-colors hover:bg-primary/90"
+                className="w-full rounded-lg bg-primary px-4 py-2.5 text-center text-14px font-medium bg-black text-white transition-colors hover:bg-primary/90"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? "Sending..." : "Send Message"}
@@ -298,18 +298,18 @@ const ContactSection = () => {
             </div>
           </form>
 
-          <div ref={infoRef} className="space-y-8 bg-white/80 rounded-2xl p-8 shadow border border-[#ffe5c2]">
+          <div ref={infoRef} className="space-y-6 bg-white/80 rounded-2xl p-6 shadow border border-[#ffe5c2]">
             <div>
-              <h3 className="mb-2 block text-20px font-medium text-[#0D0D0D] text-start">
+              <h3 className="mb-1 block text-20px font-medium text-[#0D0D0D] text-start">
                 Get in Touch
               </h3>
-              <p className="mt-2 text-[#737373] text-16px text-start text-muted-foreground">
+              <p className="text-[#737373] text-16px text-start text-muted-foreground">
                 We're here to answer your questions and provide assistance. Feel
                 free to reach out to us through any of the following methods.
               </p>
             </div>
 
-            <div className="text-start space-y-6">
+            <div className="text-start space-y-4">
               <div className="flex items-start">
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-[#0D0D0D] bg-[#E1E1E1] opacity 10.0% text-20px">
                   <MapPin className="h-5 w-5 text-primary" />
@@ -360,10 +360,10 @@ const ContactSection = () => {
             </div>
 
             <div>
-              <h3 className="mb-2 block text-20px font-medium text-[#0D0D0D] text-start">
+              <h3 className="mb-1 block text-20px font-medium text-[#0D0D0D] text-start">
                 Business Hours
               </h3>
-              <div className="mt-4 space-y-2">
+              <div className="mt-2 space-y-1">
                 <div className="flex justify-between">
                   <span className="mt-2 text-[#737373] text-16px text-start text-muted-foreground">
                     Monday - Friday
