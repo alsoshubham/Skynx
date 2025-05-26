@@ -7,14 +7,14 @@ const Footer = () => {
 
   return (
     // Remove default container margins and use max-w-7xl for better alignment
-    <footer className="py-12 bg-white text-black">
+    <footer className="py-8 bg-white text-black">
       <div className="max-w-7xl mx-auto w-full px-4 md:px-8">
         {/* Footer Grid */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Logo and Description */}
           <div>
             <h3
-              className="font-medium text-4xl font-serif"
+              className="font-medium text-4xl text-start font-serif"
               aria-label="Skyn Globals Logo"
             >
               Skyn Globals
@@ -28,8 +28,8 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-medium text-2xl font-serif">Quick Links</h4>
-            <ul className="space-y-3">
+            <h4 className="font-medium text-start text-2xl font-serif">Quick Links</h4>
+            <ul className="space-y-3 text-start">
               <li>
                 <Link
                   to="/policies/privacy-policy"
@@ -75,8 +75,8 @@ const Footer = () => {
 
           {/* Categories */}
           <div>
-            <h4 className="font-medium text-2xl font-serif">Categories</h4>
-            <ul className="space-y-3">
+            <h4 className="font-medium text-start text-2xl font-serif">Categories</h4>
+            <ul className="space-y-3 text-start">
               <li>
                 <Link
                   to="/products/whole-spices"

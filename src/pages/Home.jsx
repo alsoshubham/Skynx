@@ -4,16 +4,16 @@ import { SiMedium } from "react-icons/si";
 import Blogs from "./Blogs";
 import Contact from "../components/Contact";
 import { Link } from "react-router-dom";
-import MakhanaProduct from "../assets/MakhanaProduct.png";
+import HeroBanner from "../assets/HeroBanner.png";
 import FeaturedProducts from "./FeaturedProduct";
 import Testimonial from "./Testimonial";
 import CategorySection from "./CategorySection";
 export default function Home() {
   return (
     <>
-      <section className="pb-12 md:pt-6 md:pb-20">
+      <section className="py-16 md:pt-6 md:pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid py-8 md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-4xl md:text-5xl font-serif">
                 Discover the Finest Spices & Premium Makhana
@@ -61,7 +61,7 @@ export default function Home() {
             </div>
             <div className="overflow-hidden rounded-lg shadow-xl">
               <img
-                src={MakhanaProduct}
+                src={HeroBanner}
                 alt="Makhana Product"
                 className="rounded-lg shadow-xl max-w-full h-auto"
               />
