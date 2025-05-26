@@ -73,28 +73,28 @@ const Products = () => {
   return (
     <div className="min-h-screen bg-off-white flex flex-col">
       {/* Header */}
-      <header className="z-30 bg-off-white pt-8 pb-6 shadow-sm">
+      <header className="z-30 bg-off-white pt-6 pb-4 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="font-medium text-4xl font-serif text-center text-[#0D0D0D] mb-2">
+          <h1 className="font-medium text-4xl font-serif text-center text-[#0D0D0D] mb-3">
             Our Products
           </h1>
-          <p className="section-description text-[#737373] mt-4 max-w-xl mx-auto text-xl">
+          <p className="section-description text-[#737373] max-w-xl mx-auto text-lg">
             Premium quality spices and blends for every kitchen
           </p>
         </div>
       </header>
 
-      <div className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row gap-8 py-6">
+      <div className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row gap-6 py-4">
         {/* Sidebar */}
-        <aside className="md:w-64 w-full flex-shrink-0 md:sticky md:top-[7.5rem] md:left-0 md:self-start mb-6 md:mb-0">
-          <div className="bg-white border border-[#F3F4F6] rounded-2xl p-6 shadow-sm h-full flex flex-col">
-            <div className="flex items-center mb-5">
+        <aside className="md:w-64 w-full flex-shrink-0 md:sticky md:top-[7.5rem] md:left-0 md:self-start mb-4 md:mb-0">
+          <div className="bg-white border border-[#F3F4F6] rounded-2xl p-4 shadow-sm h-full flex flex-col">
+            <div className="flex items-center mb-3">
               <Filter className="w-5 h-5 text-spice-red mr-2" />
               <h3 className="text-lg font-bold text-pepper-black tracking-wide">
                 Categories
               </h3>
             </div>
-            <div className="space-y-2">
+            <div className="space-y-1">
               {categories.map((category) => (
                 <button
                   key={category}
@@ -113,15 +113,18 @@ const Products = () => {
         </aside>
 
         {/* Products */}
-        <main className="flex-1 h-auto md:h-[calc(100vh-10rem)] overflow-y-auto pb-8">
-          <div className="flex justify-between items-center mb-6 sticky top-0 pt-2 pb-2 z-30 bg-white shadow-sm">
+        <main className="flex-1 h-auto md:h-[calc(100vh-10rem)] overflow-y-auto pb-4">
+          <div className="flex justify-between items-center mb-4 sticky top-0 pt-1 pb-1 z-30 bg-white shadow-sm">
             <h2 className="text-xl md:text-2xl font-semibold text-pepper-black">
-              {selectedCategory} <span className="font-normal text-charcoal-grey">({filteredProducts.length} products)</span>
+              {selectedCategory}{" "}
+              <span className="font-normal text-charcoal-grey">
+                ({filteredProducts.length} products)
+              </span>
             </h2>
           </div>
 
           {/* Product Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {filteredProducts.map((product) => (
               <div
                 key={product.id}
@@ -135,7 +138,7 @@ const Products = () => {
                   />
                   {product.badge && (
                     <div
-                      className={`absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-semibold shadow ${getBadgeColor(
+                      className={`absolute top-2 left-2 px-2 py-0.5 rounded-full text-xs font-semibold shadow ${getBadgeColor(
                         product.badge
                       )}`}
                     >
@@ -144,17 +147,17 @@ const Products = () => {
                   )}
                 </div>
 
-                <div className="flex flex-col flex-1 p-4">
-                  <div className="flex items-center mb-1">
+                <div className="flex flex-col flex-1 p-3">
+                  <div className="flex items-center mb-0.5">
                     <Star className="w-4 h-4 text-turmeric-yellow fill-turmeric-yellow mr-1" />
                     <span className="text-xs text-charcoal-grey font-medium">
                       {product.rating}
                     </span>
                   </div>
-                  <h3 className="text-base font-semibold mb-1 text-pepper-black line-clamp-2 leading-tight min-h-[2.5rem]">
+                  <h3 className="text-base font-semibold mb-0.5 text-pepper-black line-clamp-2 leading-tight min-h-[2.5rem]">
                     {product.name}
                   </h3>
-                  <div className="mb-2">
+                  <div className="mb-1">
                     <div className="text-lg font-bold text-spice-red leading-tight">
                       {product.price}
                     </div>
@@ -162,8 +165,8 @@ const Products = () => {
                       Bulk: {product.bulkPrice}
                     </div>
                   </div>
-                  <div className="mt-auto pt-2">
-                    <button className="flex items-center justify-center w-full bg-spice-red hover:bg-chili-maroon text-off-white text-sm font-semibold py-2 px-2 rounded-lg transition-colors duration-200 shadow">
+                  <div className="mt-auto pt-1">
+                    <button className="flex items-center justify-center w-full bg-spice-red hover:bg-chili-maroon text-off-white text-sm font-semibold py-1.5 px-2 rounded-lg transition-colors duration-200 shadow">
                       <ShoppingCart className="w-4 h-4 mr-2" />
                       Add
                     </button>
@@ -174,7 +177,7 @@ const Products = () => {
           </div>
 
           {filteredProducts.length === 0 && (
-            <div className="text-center py-12">
+            <div className="text-center py-8">
               <p className="text-charcoal-grey">
                 No products found in this category.
               </p>
