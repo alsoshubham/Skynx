@@ -2,10 +2,12 @@ import { useEffect, useRef, useState } from "react";
 import { Mail, MapPin, Phone } from "lucide-react";
 import emailjs from "@emailjs/browser";
 import { toast } from "react-toastify"; // Import toast
+import { useLocation } from "react-router-dom";
 
 const ContactSection = () => {
   const formRef = useRef(null);
   const infoRef = useRef(null);
+  const location = useLocation();
   const [formErrors, setFormErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -41,6 +43,16 @@ const ContactSection = () => {
       if (infoElement) observer.unobserve(infoElement);
     };
   }, []);
+
+  useEffect(() => {
+    // Pre-fill products of interest if query param exists
+    const params = new URLSearchParams(location.search);
+    const products = params.get("products");
+    if (products && formRef.current) {
+      const input = formRef.current.querySelector("input[name='products']");
+      if (input) input.value = products;
+    }
+  }, [location.search]);
 
   const validateForm = (formData) => {
     const errors = {};
@@ -266,7 +278,7 @@ const ContactSection = () => {
                 </select>
               </div>
             </div>
-            
+
             <div className="md:col-span-2">
               <label
                 htmlFor="message"

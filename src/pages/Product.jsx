@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { Star, ShoppingCart, Filter } from "lucide-react";
 import { getProducts } from "../firebase/products.firebase";
+import { useCart } from "../components/useCart";
+import { toast } from "react-toastify";
 
 // Data arrays outside the component for clarity and reusability
 const categories = [
@@ -36,6 +38,7 @@ const getBadgeColor = (badge) => {
 };
 
 const Products = () => {
+  const { cart, addToCart } = useCart();
   const [searchParams, setSearchParams] = useSearchParams();
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [products, setProducts] = useState([]);
@@ -125,48 +128,68 @@ const Products = () => {
 
           {/* Product Cards - fixed width and image inside card */}
           <div className="flex flex-wrap gap-4">
-            {filteredProducts.map((product, index) => (
-              <div
-                key={index}
-                className="bg-white w-72 flex-shrink-0 overflow-hidden rounded-lg shadow-sm cursor-pointer flex flex-col"
-                style={{ scrollSnapAlign: "start" }}
-              >
-                <div className="relative w-full h-44 flex items-center justify-center bg-gray-50">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="object-contain w-full h-full rounded-t-lg transition-transform duration-700 hover:scale-105"
-                  />
-                  {product.badge && (
-                    <div
-                      className={`absolute bg-[#fca935d9] text-white top-2 left-2 px-2 py-0.5 rounded-full text-xs font-semibold shadow ${getBadgeColor(
-                        product.badge
-                      )}`}
-                    >
-                      {product.badge}
+            {filteredProducts.map((product, index) => {
+              const inCart = cart.some((item) => item.id === product.id);
+              const isWholeSpice = (product.category || '').toLowerCase() === 'whole spices';
+              return (
+                <div
+                  key={index}
+                  className="bg-white w-72 flex-shrink-0 overflow-hidden rounded-lg shadow-sm cursor-pointer flex flex-col"
+                  style={{ scrollSnapAlign: "start" }}
+                >
+                  <div className="relative w-full h-44 flex items-center justify-center bg-gray-50">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="object-contain w-full h-full rounded-t-lg transition-transform duration-700 hover:scale-105"
+                    />
+                    {product.badge && (
+                      <div
+                        className={`absolute bg-[#fca935d9] text-white top-2 left-2 px-2 py-0.5 rounded-full text-xs font-semibold shadow ${getBadgeColor(
+                          product.badge
+                        )}`}
+                      >
+                        {product.badge}
+                      </div>
+                    )}
+                  </div>
+                  <div className="p-4 text-center relative flex-1 flex flex-col">
+                    <div className="flex items-center justify-center mb-1">
+                      <Star className="w-4 h-4 text-turmeric-yellow fill-turmeric-yellow mr-1" />
+                      <span className="text-xs text-charcoal-grey font-medium">
+                        {product.rating}
+                      </span>
                     </div>
-                  )}
-                </div>
-                <div className="p-4 text-center relative flex-1 flex flex-col">
-                  <div className="flex items-center justify-center mb-1">
-                    <Star className="w-4 h-4 text-turmeric-yellow fill-turmeric-yellow mr-1" />
-                    <span className="text-xs text-charcoal-grey font-medium">
-                      {product.rating}
-                    </span>
+                    <h3 className="text-lg font-semibold mb-1 text-gray-900">
+                      {product.name}
+                    </h3>
+                    {product.description && (
+                      <p className="text-gray-600 mb-2 text-sm leading-relaxed">
+                        {product.description}
+                      </p>
+                    )}
+                    {!isWholeSpice && (
+                      <div className="text-md font-semibold text-spice-red leading-tight mb-1">
+                        ₹{product.price}
+                      </div>
+                    )}
+                    <button
+                      className={`text-amber-600 hover:text-amber-700 font-medium transition-colors duration-200 flex items-center justify-center w-full mt-auto ${inCart ? 'bg-gray-300 text-gray-500 cursor-not-allowed' : ''}`}
+                      onClick={() => {
+                        if (!inCart) {
+                          addToCart(product);
+                          toast.success('Added to cart!');
+                        }
+                      }}
+                      disabled={inCart}
+                    >
+                      <ShoppingCart className="w-4 h-4 mr-2" />
+                      {inCart ? 'In Cart' : 'Add to Cart'}
+                    </button>
                   </div>
-                  <h3 className="text-lg font-semibold mb-1 text-gray-900">
-                    {product.name}
-                  </h3>
-                  {/* <div className="text-md font-semibold text-spice-red leading-tight mb-1">
-                    ₹{product.price}/ 500g <span className="text-xs text-gray-600 mb-2">Bulk: {product.bulkPrice}/25Kgs</span>
-                  </div>
-                  <button className="text-amber-600 hover:text-amber-700 font-medium transition-colors duration-200 flex items-center justify-center w-full mt-auto">
-                    <ShoppingCart className="w-4 h-4 mr-2" />
-                    Add to Cart
-                  </button> */}
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           {filteredProducts.length === 0 && (

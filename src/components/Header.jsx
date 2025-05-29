@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone, ShoppingCart } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useCart } from "./useCart";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { cart } = useCart();
   return (
     <header className="sticky top-0 w-full bg-white/90 backdrop-blur-sm z-50 border-b py-3">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -35,24 +37,30 @@ export default function Header() {
           </nav>
 
           {/* Contact Button */}
-          <div>
+          <div className="flex items-center gap-4">
             <button
               variant="outline" size="md" 
               className="flex items-center space-x-1 px-3 py-1"
               onClick={() => window.location.href = "tel:+919540192363"}
             >
               <Phone className="w-5 h-5" />
-              <span className="text-sm">+91-9540192363</span>
+              <span className="text-sm">Call Us</span>
+            </button>
+            <Link to="/cart" className="relative">
+              <ShoppingCart className="w-6 h-6" />
+              {cart.length > 0 && (
+                <span className="absolute -top-2 -right-2 bg-amber-600 text-white text-xs rounded-full px-1.5 py-0.5">
+                  {cart.length}
+                </span>
+              )}
+            </Link>
+            <button
+              className="md:hidden ml-2"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? <X /> : <Menu />}
             </button>
           </div>
-
-          {/* Mobile menu button */}
-          <button
-            className="md:hidden ml-2"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? <X /> : <Menu />}
-          </button>
         </div>
       </div>
 

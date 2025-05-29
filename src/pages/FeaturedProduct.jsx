@@ -1,6 +1,11 @@
 import { Star, ShoppingCart } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useCart } from "../components/useCart";
+import { toast } from "react-toastify";
+
 const FeaturedProducts = () => {
+  const { cart, addToCart, removeFromCart } = useCart();
+
   const products = [
     {
       id: 1,
@@ -104,82 +109,99 @@ const FeaturedProducts = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {products.map((product) => (
-            <div
-              key={product.id}
-              className="group cursor-pointer border-0 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden rounded-xl bg-white"
-            >
-              <div className="relative overflow-hidden">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full h-52 object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-                <div
-                  className={`absolute top-3 left-3 px-2 py-0.5 rounded-full text-white text-xs font-medium ${getBadgeColor(
-                    product.badge
-                  )}`}
-                >
-                  {product.badge}
-                </div>
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300" />
-              </div>
-
-              <div className="p-4">
-                <div className="flex items-center mb-1">
-                  <div className="flex items-center text-amber-400 mr-2">
-                    {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className={`w-4 h-4 ${
-                          i < Math.floor(product.rating)
-                            ? "fill-current"
-                            : "text-gray-300"
-                        }`}
-                      />
-                    ))}
+          {products.map((product) => {
+            const inCart = cart.some((item) => item.id === product.id);
+            return (
+              <div
+                key={product.id}
+                className="group cursor-pointer border-0 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden rounded-xl bg-white"
+              >
+                <div className="relative overflow-hidden">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-52 object-cover transition-transform duration-300 group-hover:scale-110"
+                  />
+                  <div
+                    className={`absolute top-3 left-3 px-2 py-0.5 rounded-full text-white text-xs font-medium ${getBadgeColor(
+                      product.badge
+                    )}`}
+                  >
+                    {product.badge}
                   </div>
-                  <span className="text-xs text-gray-600">
-                    ({product.rating})
-                  </span>
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300" />
                 </div>
 
-                <h3 className="text-lg font-semibold mb-1 text-gray-900 group-hover:text-amber-600 transition-colors duration-200">
-                  {product.name}
-                </h3>
-
-                <p className="text-gray-600 mb-2 text-sm leading-relaxed">
-                  {product.description}
-                </p>
-
-                <div className="flex justify-between items-center mb-2">
-                  <div>
-                    <div className="text-xl text-start font-bold text-amber-600">
-                      {product.price}
+                <div className="p-4">
+                  <div className="flex items-center mb-1">
+                    <div className="flex items-center text-amber-400 mr-2">
+                      {[...Array(5)].map((_, i) => (
+                        <Star
+                          key={i}
+                          className={`w-4 h-4 ${
+                            i < Math.floor(product.rating)
+                              ? "fill-current"
+                              : "text-gray-300"
+                          }`}
+                        />
+                      ))}
                     </div>
-                    <div className="text-xs text-gray-500">
-                      Bulk: {product.bulkPrice}
-                    </div>
+                    <span className="text-xs text-gray-600">
+                      ({product.rating})
+                    </span>
+                  </div>
+
+                  <h3 className="text-lg font-semibold mb-1 text-gray-900 group-hover:text-amber-600 transition-colors duration-200">
+                    {product.name}
+                  </h3>
+                  {product.description && (
+                    <p className="text-gray-600 mb-2 text-sm leading-relaxed">
+                      {product.description}
+                    </p>
+                  )}
+
+                  <div className="flex gap-2">
+                    {!inCart ? (
+                      <button
+                        className="flex-1 flex items-center justify-center font-semibold py-1.5 px-3 rounded transition-colors duration-200 bg-amber-600 hover:bg-amber-700 text-white"
+                        onClick={() => {
+                          addToCart(product);
+                          toast.success("Added to cart!");
+                        }}
+                      >
+                        <ShoppingCart className="w-4 h-4 mr-2" />
+                        Add to Cart
+                      </button>
+                    ) : (
+                      <>
+                        <button
+                          className="flex-1 flex items-center justify-center font-semibold py-1.5 px-3 rounded transition-colors duration-200 bg-gray-300 text-gray-500 cursor-not-allowed"
+                          disabled
+                        >
+                          <ShoppingCart className="w-4 h-4 mr-2" />
+                          In Cart
+                        </button>
+                        <button
+                          className="flex-1 flex items-center justify-center font-semibold py-1.5 px-3 rounded transition-colors duration-200 border border-red-500 text-red-500 hover:bg-red-50"
+                          onClick={() => {
+                            removeFromCart(product.id);
+                            toast.info("Removed from cart");
+                          }}
+                        >
+                          Remove
+                        </button>
+                      </>
+                    )}
                   </div>
                 </div>
-
-                <div className="flex gap-2">
-                  <button className="flex-1 flex items-center justify-center bg-amber-600 hover:bg-amber-700 text-white font-semibold py-1.5 px-3 rounded transition-colors duration-200">
-                    <ShoppingCart className="w-4 h-4 mr-2" />
-                    Add to Cart
-                  </button>
-                  <button className="flex-1 border border-amber-600 text-amber-600 font-semibold py-1.5 px-3 rounded hover:bg-amber-50 transition-colors duration-200">
-                    Bulk Quote
-                  </button>
-                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         <div className="text-center mt-8">
           <Link to="/products">
-            <button className="text-amber-600 border border-amber-600 hover:bg-amber-50 px-6 py-2 rounded font-semibold text-base transition-colors duration-200">
+            <button className="bg-amber-600 hover:bg-amber-700 text-white px-6 py-2 rounded font-semibold text-base transition-colors duration-200">
               View All Products
             </button>
           </Link>

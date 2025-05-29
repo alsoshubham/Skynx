@@ -12,6 +12,7 @@ import ShippingPolicy from "./policies/ShippingPolicy";
 import TermsOfServices from "./policies/TermsOfServices";
 import CategoryBlogs from "./pages/CategoryBlogs";
 import CategorySection from "./pages/CategorySection";
+import CartPage from "./components/CartPage";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -52,6 +53,10 @@ export const router = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/cart",
+        element: <CartPage />,
       },
       {
         path: "/policies",

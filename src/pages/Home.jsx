@@ -19,11 +19,11 @@ export default function Home() {
                 Discover the Finest Spices & Premium Makhana
               </h2>
               <p className="text-[#737373] mt-4 max-w-2xl mx-auto text-2xl">
-                Welcome to Skyn Globals, your premier destination for the finest spices and premium Makhana.
+                Welcome to Skyn Globals, your premier destination for the finest spices and premium makhana.
               </p>
               <br />
               <p className="text-[#737373] max-w-2xl mx-auto text-xl">
-                Explore our wide range of spices sourced from the best farms, and indulge in the goodness of our premium Makhana.
+                Explore our wide range of spices sourced from the best farms, and indulge in the goodness of our premium makhana.
               </p>
               <br />
               <Link to="/products">
