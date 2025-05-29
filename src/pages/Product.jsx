@@ -87,7 +87,7 @@ const Products = () => {
       <div className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row gap-6 py-4">
         {/* Sidebar */}
         <aside className="md:w-64 w-full flex-shrink-0 md:sticky md:top-[7.5rem] md:left-0 md:self-start mb-4 md:mb-0">
-          <div className="bg-white border border-[#F3F4F6] rounded-2xl p-4 shadow-sm h-full flex flex-col">
+          <div className="bg-white border border-[#F3F4F6] rounded-2xl p-1 shadow-sm h-full flex flex-col">
             <div className="flex items-center mb-3">
               <Filter className="w-5 h-5 text-spice-red mr-2" />
               <h3 className="text-lg font-bold text-pepper-black tracking-wide">
@@ -123,22 +123,23 @@ const Products = () => {
             </h2>
           </div>
 
-          {/* Product Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {filteredProducts.map((product) => (
+          {/* Product Cards - fixed width and image inside card */}
+          <div className="flex flex-wrap gap-4">
+            {filteredProducts.map((product, index) => (
               <div
-                key={product.id}
-                className="group flex flex-col bg-white border border-toasted-brown/10 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-200 overflow-hidden relative"
+                key={index}
+                className="bg-white w-72 flex-shrink-0 overflow-hidden rounded-lg shadow-sm cursor-pointer flex flex-col"
+                style={{ scrollSnapAlign: "start" }}
               >
-                <div className="relative overflow-hidden aspect-square flex items-center justify-center bg-makhana-cream">
+                <div className="relative w-full h-44 flex items-center justify-center bg-gray-50">
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    className="object-contain w-full h-full rounded-t-lg transition-transform duration-700 hover:scale-105"
                   />
                   {product.badge && (
                     <div
-                      className={`absolute top-2 left-2 px-2 py-0.5 rounded-full text-xs font-semibold shadow ${getBadgeColor(
+                      className={`absolute bg-[#fca935d9] text-white top-2 left-2 px-2 py-0.5 rounded-full text-xs font-semibold shadow ${getBadgeColor(
                         product.badge
                       )}`}
                     >
@@ -146,31 +147,23 @@ const Products = () => {
                     </div>
                   )}
                 </div>
-
-                <div className="flex flex-col flex-1 p-3">
-                  <div className="flex items-center mb-0.5">
+                <div className="p-4 text-center relative flex-1 flex flex-col">
+                  <div className="flex items-center justify-center mb-1">
                     <Star className="w-4 h-4 text-turmeric-yellow fill-turmeric-yellow mr-1" />
                     <span className="text-xs text-charcoal-grey font-medium">
                       {product.rating}
                     </span>
                   </div>
-                  <h3 className="text-base font-semibold mb-0.5 text-pepper-black line-clamp-2 leading-tight min-h-[2.5rem]">
+                  <h3 className="text-lg font-semibold mb-1 text-gray-900">
                     {product.name}
                   </h3>
-                  <div className="mb-1">
-                    <div className="text-lg font-bold text-spice-red leading-tight">
-                      {product.price}
-                    </div>
-                    <div className="text-xs text-charcoal-grey">
-                      Bulk: {product.bulkPrice}
-                    </div>
+                  {/* <div className="text-md font-semibold text-spice-red leading-tight mb-1">
+                    ₹{product.price}/ 500g <span className="text-xs text-gray-600 mb-2">Bulk: {product.bulkPrice}/25Kgs</span>
                   </div>
-                  <div className="mt-auto pt-1">
-                    <button className="flex items-center justify-center w-full bg-spice-red hover:bg-chili-maroon text-off-white text-sm font-semibold py-1.5 px-2 rounded-lg transition-colors duration-200 shadow">
-                      <ShoppingCart className="w-4 h-4 mr-2" />
-                      Add
-                    </button>
-                  </div>
+                  <button className="text-amber-600 hover:text-amber-700 font-medium transition-colors duration-200 flex items-center justify-center w-full mt-auto">
+                    <ShoppingCart className="w-4 h-4 mr-2" />
+                    Add to Cart
+                  </button> */}
                 </div>
               </div>
             ))}
