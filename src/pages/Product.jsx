@@ -45,7 +45,11 @@ const Products = () => {
   // Fetch products from Firestore on mount
   useEffect(() => {
     getProducts().then((fetchedProducts) => {
-      setProducts(fetchedProducts);
+      // Remove duplicates by product.id
+      const uniqueProducts = Array.from(
+        new Map(fetchedProducts.map(p => [p.id, p])).values()
+      );
+      setProducts(uniqueProducts);
     });
   }, []);
 
