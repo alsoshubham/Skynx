@@ -14,23 +14,6 @@ const FeaturedProducts = () => {
 
   const products = getRandomProducts(allProducts, 6);
 
-  const getBadgeColor = (badge) => {
-    switch (badge) {
-      case "Bestseller":
-        return "bg-red-500";
-      case "Organic":
-        return "bg-green-500";
-      case "Premium":
-        return "bg-[#D4af37]"; // Gold color
-      case "Export Quality":
-        return "bg-blue-500";
-      case "Fresh Stock":
-        return "bg-orange-500";
-      default:
-        return "bg-gray-500";
-    }
-  };
-
   return (
     <section className="py-14 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -58,14 +41,11 @@ const FeaturedProducts = () => {
                     alt={product.name}
                     className="w-full h-52 object-cover object-center transition-transform duration-300 group-hover:scale-110 rounded-t-xl"
                   />
-                  <div
-                    className={`absolute top-3 left-3 px-2 py-0.5 rounded-full text-white text-xs font-medium ${getBadgeColor(
-                      product.badge
-                    )}`}
-                  >
-                    {product.badge}
-                  </div>
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300" />
+                  {product.badge && (
+                    <div className="absolute top-3 left-3 px-2 py-0.5 rounded-full text-white text-xs font-medium bg-gray-500">
+                      {product.badge}
+                    </div>
+                  )}
                 </div>
 
                 <div className="p-4">
