@@ -12,9 +12,9 @@ export default function Header() {
         <div className="flex justify-between items-center py-3">
           {/* Logo */}
           <div className="flex items-center">
-            <h1 className="text-2xl font-serif tracking-wider">
+            <Link to="/" className="text-2xl font-serif tracking-wider">
               Skyn Globals
-            </h1>
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
@@ -44,7 +44,7 @@ export default function Header() {
               onClick={() => window.location.href = "tel:+919540192363"}
             >
               <Phone className="w-5 h-5" />
-              <span className="text-sm">Call Us</span>
+              <span className="hidden md:inline">Call Us</span>
             </button>
             <Link to="/cart" className="relative">
               <ShoppingCart className="w-6 h-6" />

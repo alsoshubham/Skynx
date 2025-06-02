@@ -2,81 +2,17 @@ import { Star, ShoppingCart } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useCart } from "../components/useCart";
 import { toast } from "react-toastify";
+import { products as allProducts } from "../firebase/migration";
+
+const getRandomProducts = (arr, count) => {
+  const shuffled = arr.slice().sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, count);
+};
 
 const FeaturedProducts = () => {
   const { cart, addToCart, removeFromCart } = useCart();
 
-  const products = [
-    {
-      id: 1,
-      name: "Kashmiri Red Chili Powder",
-      price: "₹299",
-      bulkPrice: "₹12,000/25kg",
-      image:
-        "https://5.imimg.com/data5/SELLER/Default/2023/12/369605998/BM/CB/MX/205252686/kashmiri-red-chilli-powder-500x500.jpg",
-      rating: 4.9,
-      description:
-        "Premium quality Kashmiri chili powder with vibrant color and mild heat",
-      badge: "Bestseller",
-    },
-    {
-      id: 2,
-      name: "Organic Turmeric Powder",
-      price: "₹189",
-      bulkPrice: "₹8,500/25kg",
-      image:
-        "https://img.freepik.com/premium-photo/turmeric-powder-roots-wooden-background_680303-904.jpg",
-      rating: 4.8,
-      description:
-        "Pure organic turmeric with high curcumin content and earthy aroma",
-      badge: "Organic",
-    },
-    {
-      id: 3,
-      name: "Garam Masala Blend",
-      price: "₹249",
-      bulkPrice: "₹10,000/25kg",
-      image:
-        "https://5.imimg.com/data5/SELLER/Default/2022/11/IX/HN/WE/61556361/garam-masala-powder-500x500.jpg",
-      rating: 4.9,
-      description:
-        "Traditional blend of 12 aromatic spices, perfect for authentic Indian cuisine",
-      badge: "Premium",
-    },
-    {
-      id: 4,
-      name: "Black Pepper Whole",
-      price: "₹599",
-      bulkPrice: "₹24,000/25kg",
-      image:
-        "https://tse1.mm.bing.net/th/id/OIP.fOXneUeDP3_T66UCJJ0rIQHaHa?rs=1&pid=ImgDetMain",
-      rating: 4.7,
-      description: "Premium Malabar black pepper with intense flavor and aroma",
-      badge: "Export Quality",
-    },
-    {
-      id: 5,
-      name: "Cardamom Green Pods",
-      price: "₹1,299",
-      bulkPrice: "₹52,000/25kg",
-      image:
-        "https://cdn.shopify.com/s/files/1/0062/4214/0227/products/SP_08-02_2048x.jpg?v=1540659059",
-      rating: 4.9,
-      description: "Grade A green cardamom pods with exceptional fragrance",
-      badge: "Premium",
-    },
-    {
-      id: 6,
-      name: "Coriander Seeds",
-      price: "₹159",
-      bulkPrice: "₹6,500/25kg",
-      image: "https://gardeningtips.in/wp-content/uploads/2020/05/Comp3-1.jpg",
-      rating: 4.6,
-      description:
-        "Fresh coriander seeds with citrusy flavor and perfect for grinding",
-      badge: "Fresh Stock",
-    },
-  ];
+  const products = getRandomProducts(allProducts, 6);
 
   const getBadgeColor = (badge) => {
     switch (badge) {
@@ -120,7 +56,7 @@ const FeaturedProducts = () => {
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="w-full h-52 object-cover transition-transform duration-300 group-hover:scale-110"
+                    className="w-full h-52 object-cover object-center transition-transform duration-300 group-hover:scale-110 rounded-t-xl"
                   />
                   <div
                     className={`absolute top-3 left-3 px-2 py-0.5 rounded-full text-white text-xs font-medium ${getBadgeColor(

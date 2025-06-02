@@ -79,7 +79,7 @@ const Footer = () => {
             <ul className="space-y-3 text-start">
               <li>
                 <Link
-                  to="/products/whole-spices"
+                  to="/product?category=Whole+Spices"
                   className="text-black hover:text-[#fca935] transition-colors"
                 >
                   Whole Spices
@@ -87,7 +87,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  to="/products/ground-spices"
+                  to="/product?category=Ground+Spices"
                   className="text-black hover:text-[#fca935] transition-colors"
                 >
                   Ground Spices
@@ -95,34 +95,18 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  to="/products/spice-blends"
+                  to="/product?category=Retail+Packs"
                   className="text-black hover:text-[#fca935] transition-colors"
                 >
-                  Spice Blends
+                  Retail Packs
                 </Link>
               </li>
               <li>
                 <Link
-                  to="#"
+                  to="/product?category=Makhana"
                   className="text-black hover:text-[#fca935] transition-colors"
                 >
-                  Classic Makhana
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="#"
-                  className="text-black hover:text-[#fca935] transition-colors"
-                >
-                  Spicy Makhana
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="#"
-                  className="text-black hover:text-[#fca935] transition-colors"
-                >
-                  Caramel Makhana
+                  Makhana
                 </Link>
               </li>
             </ul>

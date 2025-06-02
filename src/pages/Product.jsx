@@ -10,10 +10,9 @@ const categories = [
   "All",
   "Whole Spices",
   "Ground Spices",
-  "Spice Blends",
-  "Premium Collection",
-  "Organic Range",
+  "Blends",
   "Retail Packs",
+  "Makhana"
 ];
 
 const getBadgeColor = (badge) => {
@@ -87,7 +86,7 @@ const Products = () => {
         </div>
       </header>
 
-      <div className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row gap-6 py-4">
+      <div className="flex-1 max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row gap-6 py-4">
         {/* Sidebar */}
         <aside className="md:w-64 w-full flex-shrink-0 md:sticky md:top-[7.5rem] md:left-0 md:self-start mb-4 md:mb-0">
           <div className="bg-white border border-[#F3F4F6] rounded-2xl p-1 shadow-sm h-full flex flex-col">
@@ -126,16 +125,15 @@ const Products = () => {
             </h2>
           </div>
 
-          {/* Product Cards - fixed width and image inside card */}
-          <div className="flex flex-wrap gap-4">
+          {/* Product Cards - grid layout, no horizontal scroll/crousel */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {filteredProducts.map((product, index) => {
               const inCart = cart.some((item) => item.id === product.id);
               const isWholeSpice = (product.category || '').toLowerCase() === 'whole spices';
               return (
                 <div
                   key={index}
-                  className="bg-white w-72 flex-shrink-0 overflow-hidden rounded-lg shadow-sm cursor-pointer flex flex-col"
-                  style={{ scrollSnapAlign: "start" }}
+                  className="bg-white flex flex-col overflow-hidden rounded-lg shadow-sm cursor-pointer border border-[#F3F4F6] hover:shadow-md transition-shadow duration-200"
                 >
                   <div className="relative w-full h-44 flex items-center justify-center bg-gray-50">
                     <img
