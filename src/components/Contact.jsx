@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Mail, MapPin, Phone } from "lucide-react";
 import emailjs from "@emailjs/browser";
-import { toast } from "react-toastify"; // Import toast
+import { toast } from "react-toastify";
 import { useLocation } from "react-router-dom";
 
 const ContactSection = () => {
@@ -58,7 +58,7 @@ const ContactSection = () => {
     const errors = {};
     if (!formData.get("name")) errors.name = "Name is required";
     if (!formData.get("email")) errors.email = "Email is required";
-    if (!formData.get("subject")) errors.subject = "Subject is required";
+    // if (!formData.get("subject")) errors.subject = "Subject is required";
     if (!formData.get("message")) errors.message = "Message is required";
     return errors;
   };
@@ -67,9 +67,12 @@ const ContactSection = () => {
     e.preventDefault();
 
     if (!formRef.current) return;
+    console.log(formRef.current)
 
     const formData = new FormData(e.target);
+    
     const errors = validateForm(formData);
+    console.log(errors)
     if (Object.keys(errors).length > 0) {
       setFormErrors(errors);
       return;
@@ -79,10 +82,11 @@ const ContactSection = () => {
       setIsSubmitting(true);
 
       await emailjs.sendForm(
-        "service_e3u1m9y", // Replace with your EmailJS service ID
-        "template_imhwvhl", // Replace with your EmailJS template ID
+        import.meta.env.VITE_SERVICE_ID,
+        import.meta.env.VITE_TEMPLATE_ID,
         formRef.current,
-        "n2azYNJpXqz55Fjvi" // Replace with your EmailJS public key
+        import.meta.env.VITE_PUBLIC_KEY,
+       // Replace with your EmailJS public key
       );
 
       toast.success("Message sent successfully!"); // Success toast
@@ -168,7 +172,7 @@ const ContactSection = () => {
                   id="email"
                   name="email"
                   aria-label="Email"
-                  className="w-full rounded-lg border border-border bg-transparent px-4 py-2.5 text-black"
+                  className="w-full rounded-lg border  bg-transparent px-4 py-2.5 text-black"
                   placeholder="Your email"
                   required
                 />
@@ -302,7 +306,7 @@ const ContactSection = () => {
             <div className="md:col-span-2">
               <button
                 type="submit"
-                className="w-full rounded-lg bg-primary px-4 py-2.5 text-center text-14px font-medium bg-black text-white transition-colors hover:bg-primary/90"
+                className="w-full rounded-lg bg-primary px-4 py-2.5 text-center text-14px font-medium bg-black text-white transition-colors hover:bg-red-500"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? "Sending..." : "Send Message"}
@@ -310,7 +314,10 @@ const ContactSection = () => {
             </div>
           </form>
 
-          <div ref={infoRef} className="space-y-6 bg-white/80 rounded-2xl p-6 shadow border border-[#ffe5c2]">
+          <div
+            ref={infoRef}
+            className="space-y-6 bg-white/80 rounded-2xl p-6 shadow border border-[#ffe5c2]"
+          >
             <div>
               <h3 className="mb-1 block text-20px font-medium text-[#0D0D0D] text-start">
                 Get in Touch

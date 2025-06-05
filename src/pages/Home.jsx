@@ -8,70 +8,67 @@ import HeroBanner from "../assets/HeroBanner.png";
 import FeaturedProducts from "./FeaturedProduct";
 import Testimonial from "./Testimonial";
 import CategorySection from "./CategorySection";
+
 export default function Home() {
   return (
     <>
-      <section className="py-16 md:pt-6 md:pb-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="grid py-8 md:grid-cols-2 gap-12 items-center">
+      <section className="py-20 md:pt-12 md:pb-28 bg-white">
+        <div className="max-w-[1200px] mx-auto px-6 sm:px-10">
+          <div className="grid py-12 md:grid-cols-2 gap-16 text-left items-center">
             <div>
-              <h2 className="text-4xl md:text-5xl font-serif">
+              <h2 className="text-4xl md:text-5xl font-semibold mb-6">
                 Discover the Finest Spices & Premium Makhana
               </h2>
-              <p className="text-[#737373] mt-4 max-w-2xl mx-auto text-2xl">
-                Welcome to Skyn Globals, your premier destination for the finest spices and premium makhana.
-              </p>
-              <br />
-              <p className="text-[#737373] max-w-2xl mx-auto text-xl">
+              <p className="text-[#737373] max-w-xl text-lg mb-6">
                 Explore our wide range of spices sourced from the best farms, and indulge in the goodness of our premium makhana.
               </p>
-              <br />
               <Link to="/products">
-                <button className="bg-black text-white px-8 py-3 flex items-center space-x-2 hover:bg-[#FCA935] transition">
+                <button className="bg-black text-white px-6 py-2 flex items-center space-x-2 hover:bg-[#28282b] transition rounded-lg text-sm font-semibold shadow-md">
                   <span>Shop Now</span>
-                  <ArrowRight size={20} />
+                  <ArrowRight size={22} />
                 </button>
               </Link>
-              <br />
-              <div className="flex space-x-5">
+              <div className="flex space-x-6 mt-8">
                 <Link
                   to="https://x.com/"
                   className="text-[#0D0D0D] hover:text-[#FCA935]"
                 >
-                  <FaTwitter size={24} />
+                  <FaTwitter size={26} />
                 </Link>
                 <Link
                   to="https://"
                   className="text-[#0D0D0D] hover:text-[#FCA935]"
                 >
-                  <FaFacebook size={24} />
+                  <FaFacebook size={26} />
                 </Link>
                 <Link
                   to="https://www.instagram.com/"
-                  className="text-[#ODODOD] hover:text-[#FCA935]"
+                  className="text-[#0D0D0D] hover:text-[#FCA935]"
                 >
-                  <FaInstagram size={24} />
+                  <FaInstagram size={26} />
                 </Link>
                 <Link
                   to="https://medium.com/@skynxglobalsindia"
                   className="text-[#0D0D0D] hover:text-[#FCA935]">
-                  <SiMedium size={24} />
-                  </Link>
+                  <SiMedium size={26} />
+                </Link>
               </div>
             </div>
-            <div className="overflow-hidden rounded-lg shadow-xl">
+            <div className="overflow-hidden rounded-2xl hover:shadow-2xl transition-shadow p-2 bg-[#faf7f2] flex justify-center">
               <img
                 src={HeroBanner}
                 alt="Makhana Product"
-                className="rounded-lg shadow-xl max-w-full h-auto"
+                className="rounded-2xl shadow-xl max-w-full h-auto object-contain"
               />
             </div>
           </div>
-          <CategorySection />
-          <FeaturedProducts/>
-          <Testimonial/>
-          <Blogs />
-          <Contact />
+          <div className="space-y-20 mt-10">
+            <CategorySection />
+            <FeaturedProducts />
+            <Testimonial />
+            <Blogs />
+            <Contact />
+          </div>
         </div>
       </section>
     </>

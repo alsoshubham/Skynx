@@ -42,13 +42,15 @@ export default function CategorySection() {
 				`}
 			</style>
 			<div className="max-w-7xl mx-auto px-4 sm:px-6">
-				<h3 className="font-medium text-4xl font-serif text-center text-[#0D0D0D] mb-8">
+				<div>
+				<h2 className="font-medium text-4xl text-center text-[#0D0D0D] mb-8">
 					Shop by Categories
-				</h3>
+				</h2>
 				<p className="section-description text-[#737373] max-w-xl mx-auto text-lg">
 					Discover our extensive range of premium spices and makhana, carefully
 					sourced and processed to bring you the finest flavors
 				</p>
+				</div>
 				<div className="relative mt-6">
 					<button
 						aria-label="Scroll categories left"

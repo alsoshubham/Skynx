@@ -38,14 +38,6 @@ export default function Header() {
 
           {/* Contact Button */}
           <div className="flex items-center gap-4">
-            <button
-              variant="outline" size="md" 
-              className="flex items-center space-x-1 px-3 py-1"
-              onClick={() => window.location.href = "tel:+919540192363"}
-            >
-              <Phone className="w-5 h-5" />
-              <span className="hidden md:inline">Call Us</span>
-            </button>
             <Link to="/cart" className="relative">
               <ShoppingCart className="w-6 h-6" />
               {cart.length > 0 && (
@@ -54,6 +46,14 @@ export default function Header() {
                 </span>
               )}
             </Link>
+            <button
+              variant="outline" size="md" 
+              className="flex items-center space-x-1 px-3 py-1"
+              onClick={() => window.location.href = "tel:+919540192363"}
+            >
+              <Phone className="w-5 h-5" />
+              <span className="hidden md:inline">Call Us</span>
+            </button>
             <button
               className="md:hidden ml-2"
               onClick={() => setIsMenuOpen(!isMenuOpen)}

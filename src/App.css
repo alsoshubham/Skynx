@@ -3,7 +3,10 @@
   margin: 0 auto;
   text-align: center;
 }
-
+h1, h2{
+  font-family: 'Sentient', serif;
+  color : #28282b
+}
 .logo {
   height: 6em;
   padding: 1.5em;

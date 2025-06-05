@@ -507,7 +507,7 @@ export const products = [
     "name": "Classic Raw Makhana",
     "price": 70,
     "bulkPrice": 520,
-    "image": "/images/makhana/classic-raw.jpg",
+    "image": "https://i.pinimg.com/736x/38/8a/42/388a425192aa990139ec73711a428e81.jpg",
     "rating": 4.8,
     "category": "Makhana",
     "badge": "Household Essential"
@@ -517,7 +517,7 @@ export const products = [
     "name": "Roasted Salted Makhana",
     "price": 90,
     "bulkPrice": 620,
-    "image": "/images/makhana/salted.jpg",
+    "image": "https://i.pinimg.com/736x/7c/6f/17/7c6f175859200cc95fc72f2fba62a193.jpg",
     "rating": 4.7,
     "category": "Makhana",
     "badge": "Healthy Snack"
@@ -527,7 +527,7 @@ export const products = [
     "name": "Spicy Peri-Peri Makhana",
     "price": 95,
     "bulkPrice": 640,
-    "image": "/images/makhana/peri-peri.jpg",
+    "image": "https://i.pinimg.com/736x/0d/09/71/0d097163ca1a2a73b4f36958c8ed27b5.jpg",
     "rating": 4.6,
     "category": "Makhana",
     "badge": "Healthy Snack"
@@ -547,7 +547,7 @@ export const products = [
     "name": "Mint Makhana",
     "price": 95,
     "bulkPrice": 660,
-    "image": "/images/makhana/mint.jpg",
+    "image": "https://i.pinimg.com/736x/74/5d/5a/745d5a5a180ac093264ab5f813010463.jpg",
     "rating": 4.4,
     "category": "Makhana",
     "badge": "Healthy Snack"
@@ -557,7 +557,7 @@ export const products = [
     "name": "Cream & Onion Makhana",
     "price": 95,
     "bulkPrice": 660,
-    "image": "/images/makhana/cream-onion.jpg",
+    "image": "https://i.pinimg.com/736x/cb/ba/47/cbba4777dbf16aee2f380ab0096a8870.jpg",
     "rating": 4.5,
     "category": "Makhana",
     "badge": "Healthy Snack"
@@ -567,41 +567,11 @@ export const products = [
     "name": "Desi Masala Makhana",
     "price": 95,
     "bulkPrice": 650,
-    "image": "/images/makhana/masala.jpg",
+    "image": "https://i.pinimg.com/736x/2d/57/f2/2d57f28fec2178c6fe0aba7c4b8380f0.jpg",
     "rating": 4.6,
     "category": "Makhana",
     "badge": "Spicy Snack"
   },
-  {
-    "id": 57,
-    "name": "Low-Fat Diet Makhana",
-    "price": 85,
-    "bulkPrice": 600,
-    "image": "/images/makhana/diet.jpg",
-    "rating": 4.7,
-    "category": "Makhana",
-    "badge": "Diet-Friendly"
-  },
-  {
-    "id": 58,
-    "name": "Premium Jumbo Makhana",
-    "price": 120,
-    "bulkPrice": 850,
-    "image": "/images/makhana/jumbo.jpg",
-    "rating": 4.9,
-    "category": "Makhana",
-    "badge": "Premium Grade"
-  },
-  {
-    "id": 59,
-    "name": "Organic Makhana (Certified)",
-    "price": 110,
-    "bulkPrice": 800,
-    "image": "/images/makhana/organic.jpg",
-    "rating": 4.9,
-    "category": "Makhana",
-    "badge": "Organic Certified"
-  }
 ];
 // Example usage
 migrateAllProducts(products);
