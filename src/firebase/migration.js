@@ -537,7 +537,7 @@ export const products = [
     "name": "Caramel Makhana",
     "price": 100,
     "bulkPrice": 700,
-    "image": "/images/makhana/caramel.jpg",
+    "image": "https://i.pinimg.com/736x/ca/e3/da/cae3da2de69db661d57add121f718665.jpg",
     "rating": 4.5,
     "category": "Makhana",
     "badge": "Sweet Treat"

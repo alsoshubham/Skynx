@@ -28,7 +28,7 @@ export default function CategorySection() {
 	};
 
 	return (
-		<section className="py-12 bg-gray-50">
+		<section className="category-section bg-gray-50">
 			{/* Global style for hiding scrollbars */}
 			<style>
 				{`
@@ -43,7 +43,7 @@ export default function CategorySection() {
 			</style>
 			<div className="max-w-7xl mx-auto px-4 sm:px-6">
 				<div>
-				<h2 className="font-medium text-4xl text-center text-[#0D0D0D] mb-8">
+				<h2 className="font-medium text-4xl font-serif text-center text-[#0D0D0D] mb-6">
 					Shop by Categories
 				</h2>
 				<p className="section-description text-[#737373] max-w-xl mx-auto text-lg">

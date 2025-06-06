@@ -116,7 +116,7 @@ const Footer = () => {
           <div>
             <h5 className="font-medium text-2xl text-start font-serif">Location</h5>
             <p className="text-black text-start leading-relaxed">
-              H.No. 8 1st Flr, Pvt 101, 102, Blk-C, Ranjit Nagar, Patel Nagar
+              H.No. 8 1st Flr, Pvt 101, 102, Blk-C, Ranjeet Nagar, Patel Nagar
               West, New Delhi, Central Delhi- 110008
             </p>
             <h5 className="font-medium text-2xl text-start font-serif mt-6 mb-4">Follow Us</h5>

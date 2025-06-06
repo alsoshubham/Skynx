@@ -66,7 +66,8 @@ const TestimonialsSection = () => {
   };
 
   return (
-    <section className="py-12 bg-white text-black">
+    
+    <section className="testimonial-section bg-white text-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8">
           <h2 className="font-medium text-4xl font-serif text-center text-[#0D0D0D] mb-5">What Our Customers Say</h2>
@@ -75,6 +76,7 @@ const TestimonialsSection = () => {
           </p>
         </div>
         <div className="relative">
+          {/* Navigation buttons */}
           <button
             aria-label="Scroll testimonials left"
             onClick={() => scroll('left')}

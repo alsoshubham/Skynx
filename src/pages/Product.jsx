@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { Star, ShoppingCart, Filter } from "lucide-react";
+import { ShoppingCart, X, Filter } from "lucide-react";
 import { getProducts } from "../firebase/products.firebase";
 import { useCart } from "../components/useCart";
 import { toast } from "react-toastify";
-
+import Button from "../components/Button";
 // Data arrays outside the component for clarity and reusability
 const categories = [
   "All",
@@ -37,7 +37,7 @@ const getBadgeColor = (badge) => {
 };
 
 const Products = () => {
-  const { cart, addToCart } = useCart();
+  const { cart, addToCart, removeFromCart } = useCart();
   const [searchParams, setSearchParams] = useSearchParams();
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [products, setProducts] = useState([]);
@@ -133,7 +133,6 @@ const Products = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {filteredProducts.map((product, index) => {
               const inCart = cart.some((item) => item.id === product.id);
-              const isWholeSpice = (product.category || '').toLowerCase() === 'whole spices';
               return (
                 <div
                   key={index}
@@ -155,39 +154,41 @@ const Products = () => {
                       </div>
                     )}
                   </div>
-                  <div className="p-4 text-center relative flex-1 flex flex-col">
-                    <div className="flex items-center justify-center mb-1">
-                      <Star className="w-4 h-4 text-turmeric-yellow fill-turmeric-yellow mr-1" />
-                      <span className="text-xs text-charcoal-grey font-medium">
-                        {product.rating}
-                      </span>
-                    </div>
-                    <h3 className="text-lg font-semibold mb-1 text-gray-900">
-                      {product.name}
-                    </h3>
-                    {product.description && (
-                      <p className="text-gray-600 mb-2 text-sm leading-relaxed">
-                        {product.description}
-                      </p>
-                    )}
-                    {!isWholeSpice && (
-                      <div className="text-md font-semibold text-spice-red leading-tight mb-1">
-                        ₹{product.price}
+                  <div className="p-4">
+                    <div className="text-left">
+                      <div className="inline-flex items-center justify-between w-full">
+                        <h3 className="text-lg font-semibold mb-1 text-gray-900 group-hover:text-amber-600 transition-colors duration-200">
+                          {product.name}
+                        </h3>
+                        <div className="flex gap-2">
+                          {!inCart ? (
+                            <Button
+                              onClick={() => {
+                                addToCart(product);
+                                toast.success("Added to cart!");
+                              }}
+                            >
+                              <ShoppingCart className="w-4 h-4" />
+                            </Button>
+                          ) : (
+                            <>
+                              <Button
+                                onClick={() => {
+                                  removeFromCart(product.id);
+                                  toast.info("Removed from cart");
+                                }}
+                              >
+                                <X className="w-4 h-4" />
+                              </Button>
+                            </>
+                          )}
+                        </div>
                       </div>
-                    )}
-                    <button
-                      className={`text-amber-600 hover:text-amber-700 font-medium transition-colors duration-200 flex items-center justify-center w-full mt-auto ${inCart ? 'bg-gray-300 text-gray-500 cursor-not-allowed' : ''}`}
-                      onClick={() => {
-                        if (!inCart) {
-                          addToCart(product);
-                          toast.success('Added to cart!');
-                        }
-                      }}
-                      disabled={inCart}
-                    >
-                      <ShoppingCart className="w-4 h-4 mr-2" />
-                      {inCart ? 'In Cart' : 'Add to Cart'}
-                    </button>
+                      <p className="text-gray-600 mb-2 text-sm leading-relaxed max-w-xs line-clamp-2">
+                        {product.description ||
+                          "Explore our wide range of spices sourced from the best farms, and indulge in the goodness of our premium makhana."}
+                      </p>
+                    </div>
                   </div>
                 </div>
               );

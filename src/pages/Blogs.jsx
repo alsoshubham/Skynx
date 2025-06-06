@@ -72,7 +72,7 @@ const Blogs = () => {
   }, [blogsRef]);
 
   return (
-    <section id="blog" className="bg-white py-12">
+    <section id="blog" className="bg-white">
       <div className="section-container">
         <div className="mb-8 text-center">
           <h2 className="font-medium text-4xl font-serif text-center text-[#0D0D0D] mb-5">

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Menu, X, Phone, ShoppingCart } from "lucide-react";
+import { Menu, X, Phone, ShoppingBag } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useCart } from "./useCart";
 
@@ -7,7 +7,7 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { cart } = useCart();
   return (
-    <header className="sticky top-0 w-full bg-white/90 backdrop-blur-sm z-50 border-b py-3">
+    <header className="sticky top-0 w-full bg-white z-50  py-3">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex justify-between items-center py-3">
           {/* Logo */}
@@ -37,12 +37,13 @@ export default function Header() {
           </nav>
 
           {/* Contact Button */}
-          <div className="flex items-center gap-4">
-            <Link to="/cart" className="relative">
-              <ShoppingCart className="w-6 h-6" />
+          <div className="flex items-center gap-1">
+            <Link to="/cart" className="relative flex items-center space-x-1 px-3 py-1">
+              <ShoppingBag className="w-6 h-6" />
+              <span className="hidden md:inline">Cart</span>
               {cart.length > 0 && (
                 <span className="absolute -top-2 -right-2 bg-amber-600 text-white text-xs rounded-full px-1.5 py-0.5">
-                  {cart.length}
+                {cart.length}
                 </span>
               )}
             </Link>

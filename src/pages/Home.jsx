@@ -12,14 +12,14 @@ import CategorySection from "./CategorySection";
 export default function Home() {
   return (
     <>
-      <section className="py-20 md:pt-12 md:pb-28 bg-white">
+      <section className="hero-container bg-white">
         <div className="max-w-[1200px] mx-auto px-6 sm:px-10">
           <div className="grid py-12 md:grid-cols-2 gap-16 text-left items-center">
             <div>
-              <h2 className="text-4xl md:text-5xl font-semibold mb-6">
+              <h2 className="font-medium text-4xl text-left font-serif text-[#0D0D0D] mb-6">
                 Discover the Finest Spices & Premium Makhana
               </h2>
-              <p className="text-[#737373] max-w-xl text-lg mb-6">
+              <p className="text-[#737373] font-serif max-w-xl text-lg mb-6">
                 Explore our wide range of spices sourced from the best farms, and indulge in the goodness of our premium makhana.
               </p>
               <Link to="/products">
@@ -57,7 +57,7 @@ export default function Home() {
             <div className="overflow-hidden rounded-2xl hover:shadow-2xl transition-shadow p-2 bg-[#faf7f2] flex justify-center">
               <img
                 src={HeroBanner}
-                alt="Makhana Product"
+                alt="Products"
                 className="rounded-2xl shadow-xl max-w-full h-auto object-contain"
               />
             </div>

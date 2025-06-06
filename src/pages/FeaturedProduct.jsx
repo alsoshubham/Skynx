@@ -1,4 +1,4 @@
-import { Star, ShoppingCart, X } from "lucide-react";
+import { ShoppingCart, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useCart } from "../components/useCart";
 import { toast } from "react-toastify";
@@ -11,10 +11,10 @@ const FeaturedProducts = () => {
   // const products = getRandomProducts(allProducts, 6);
 
   return (
-    <section className="py-14 bg-white">
+    <section className="featured-section bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
-          <h2 className="font-medium text-4xl  font-serif text-center text-[#0D0D0D] mb-6">
+          <h2 className="font-medium text-4xl font-serif text-center text-[#0D0D0D] mb-6">
             Featured Products
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -23,7 +23,7 @@ const FeaturedProducts = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {allProducts
             .sort(() => 0.5 - Math.random())
             .slice(0, 8)
