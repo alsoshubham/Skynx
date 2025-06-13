@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { ShoppingCart, X, Filter } from "lucide-react";
-import { getProducts } from "../firebase/products.firebase";
+// import { getProducts } from "../firebase/products.firebase";
+import { getProducts } from "../Constant";
 import { useCart } from "../components/useCart";
 import { toast } from "react-toastify";
 import Button from "../components/Button";
@@ -42,15 +43,13 @@ const Products = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [products, setProducts] = useState([]);
 
-  // Fetch products from Firestore on mount
+  // Fetch products from Constant.js on mount
   useEffect(() => {
-    getProducts().then((fetchedProducts) => {
-      // Remove duplicates by product.id
-      const uniqueProducts = Array.from(
-        new Map(fetchedProducts.map(p => [p.id, p])).values()
-      );
-      setProducts(uniqueProducts);
-    });
+    // Remove duplicates by product.id
+    const uniqueProducts = Array.from(
+      new Map(getProducts.map(p => [p.id, p])).values()
+    );
+    setProducts(uniqueProducts);
   }, []);
 
   // Initialize selected category from URL params

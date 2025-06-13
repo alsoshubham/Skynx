@@ -40,7 +40,6 @@ export default function Header() {
           <div className="flex items-center gap-1">
             <Link to="/cart" className="relative flex items-center space-x-1 px-3 py-1">
               <ShoppingBag className="w-6 h-6" />
-              <span className="hidden md:inline">Cart</span>
               {cart.length > 0 && (
                 <span className="absolute -top-2 -right-2 bg-amber-600 text-white text-xs rounded-full px-1.5 py-0.5">
                 {cart.length}

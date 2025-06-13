@@ -1,20 +1,57 @@
 import { useNavigate } from "react-router-dom";
-import { useRef, useEffect, useState } from "react";
-import { getCategories } from "../firebase/categories.firebase"; // <-- import getCategory
+import { useRef } from "react";
+import RetailPackImg from "../assets/RetailPack.png";
+import ClassicMakhanaImg from "../assets/ClassicMakhana.png";
+
+// Static categories for carousel
+const categories = [
+	{
+		name: "Whole Spices",
+		description: "Fresh, aromatic whole spices",
+		image:
+			"https://www.millerstores.com/web/image/product.template/10117/image_1920?unique=50df937",
+	},
+	{
+		name: "Ground Spices",
+		description: "Finely ground premium powders",
+		image:
+			"https://tse2.mm.bing.net/th/id/OIP.4VE9dSSpZ-snxTBQ6_zk3AHaFc?cb=thvnextc2&rs=1&pid=ImgDetMain",
+	},
+	{
+		name: "Retail Packs",
+		description: "Ready-to-use consumer packs",
+		image: RetailPackImg,
+	},
+	{
+		name: "Makhana",
+		description: "The original flavor that started it all.",
+		image: ClassicMakhanaImg,
+	},
+];
 
 export default function CategorySection() {
 	const navigate = useNavigate();
 	const carouselRef = useRef(null);
-	const [categories, setCategories] = useState([]);
-
-	useEffect(() => {
-		getCategories().then((data) => {
-			setCategories(data || []);
-		});
-	}, []);
 
 	const handleCategoryClick = (categoryName) => {
-		navigate(`/products?category=${encodeURIComponent(categoryName)}`);
+		// Map display names to product category query
+		let query = categoryName;
+		if (categoryName === "Classic Makhana" || categoryName === "Spicy Makhana") {
+			query = "Makhana";
+		}
+		if (categoryName === "Spice Blends") {
+			query = "Blends";
+		}
+		if (categoryName === "Retail Packs") {
+			query = "Retail Packs";
+		}
+		if (categoryName === "Whole Spices") {
+			query = "Whole Spices";
+		}
+		if (categoryName === "Ground Spices") {
+			query = "Ground Spices";
+		}
+		navigate(`/products?category=${encodeURIComponent(query)}`);
 	};
 
 	const scroll = (direction) => {
@@ -91,7 +128,7 @@ export default function CategorySection() {
 										{category.description}
 									</p>
 									<button className="text-amber-600 hover:text-amber-700 font-medium transition-colors duration-200">
-										View Category →
+										View Products →
 									</button>
 								</div>
 							</div>

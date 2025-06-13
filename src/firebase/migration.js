@@ -573,5 +573,5 @@ export const products = [
     "badge": "Spicy Snack"
   },
 ];
-// Example usage
-migrateAllProducts(products);
+// // Example usage
+// migrateAllProducts(products);
